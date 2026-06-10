@@ -1,0 +1,51 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}GameShelf{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <a class="brand" href="{% url 'home' %}">GAMESHELF</a>
+
+            <div class="nav-links">
+                <a href="{% url 'home' %}">HOME</a>
+                <span>|</span>
+                <a href="#">GAMES</a>
+                <span>|</span>
+                <a href="#">PROFILE</a>
+                <span>|</span>
+                <a class="premium-link" href="#">PREMIUM</a>
+                <span>|</span>
+
+                {% if user.is_authenticated %}
+                    <form class="logout-form" action="#" method="post">
+                        {% csrf_token %}
+                        <button type="submit">LOGOUT</button>
+                    </form>
+                {% else %}
+                    <a href="#">LOGIN / REGISTER</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-shell">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message message-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
