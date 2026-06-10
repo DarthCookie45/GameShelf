@@ -117,3 +117,72 @@ body {
 .message-error {
     background: #ffd6d6;
 }
+
+.home-hero {
+    align-items: center;
+    display: grid;
+    min-height: 360px;
+}
+
+.eyebrow {
+    color: var(--coal);
+    font-weight: bold;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.home-hero h1 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1;
+    margin: 0 0 18px;
+    max-width: 900px;
+}
+
+.hero-text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 720px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.button-secondary {
+    background: #ffffff;
+}
+
+.feature-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 24px;
+}
+
+.feature-grid h2 {
+    margin-top: 0;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+    }
+
+    .page-shell {
+        padding: 18px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}

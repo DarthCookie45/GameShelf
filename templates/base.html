@@ -15,20 +15,21 @@
 
             <div class="nav-links">
                 <a href="{% url 'home' %}">HOME</a>
-                <span>|</span>
-                <a href="#">GAMES</a>
-                <span>|</span>
-                <a href="#">PROFILE</a>
-                <span>|</span>
-                <a class="premium-link" href="#">PREMIUM</a>
-                <span>|</span>
 
                 {% if user.is_authenticated %}
+                    <span>|</span>
+                    <a href="#">GAMES</a>
+                    <span>|</span>
+                    <a href="#">PROFILE</a>
+                    <span>|</span>
+                    <a class="premium-link" href="#">PREMIUM</a>
+                       <span>|</span>
                     <form class="logout-form" action="#" method="post">
                         {% csrf_token %}
                         <button type="submit">LOGOUT</button>
                     </form>
                 {% else %}
+                    <span>|</span>
                     <a href="#">LOGIN / REGISTER</a>
                 {% endif %}
             </div>
