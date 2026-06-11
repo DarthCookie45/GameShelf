@@ -23,14 +23,14 @@
                     <a href="#">PROFILE</a>
                     <span>|</span>
                     <a class="premium-link" href="#">PREMIUM</a>
-                       <span>|</span>
-                    <form class="logout-form" action="#" method="post">
+                    <span>|</span>
+                    <form class="logout-form" action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
                         <button type="submit">LOGOUT</button>
                     </form>
                 {% else %}
                     <span>|</span>
-                    <a href="#">LOGIN / REGISTER</a>
+                    <a href="{% url 'login' %}">LOGIN / REGISTER</a>
                 {% endif %}
             </div>
         </nav>

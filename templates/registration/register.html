@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Register | GameShelf{% endblock %}
+
+{% block content %}
+<section class="auth-layout">
+    <div class="auth-panel auth-info panel">
+        <h1>Start Your GameShelf</h1>
+        <p>
+            Create an account to build a private collection of board games,
+            card games, tabletop games and video games.
+        </p>
+        <p>
+            Once registered, you can track ownership, platforms, favourites and
+            play history.
+        </p>
+    </div>
+
+    <div class="auth-panel panel">
+        <p class="eyebrow">Login / Register</p>
+        <h2>Register</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {% if form.errors %}
+                <div class="message message-error">
+                    Please fix the errors below.
+                </div>
+            {% endif %}
+
+            {{ form.as_p }}
+
+            <button class="button form-button" type="submit">Create Account</button>
+        </form>
+
+        <p class="auth-switch">
+            Already have an account?
+            <a href="{% url 'login' %}">Log in</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

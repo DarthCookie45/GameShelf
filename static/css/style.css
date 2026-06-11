@@ -186,3 +186,64 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.auth-layout {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1fr 1fr;
+    margin: 64px auto 0;
+    max-width: 1100px;
+}
+
+.auth-panel {
+    min-height: 420px;
+}
+
+.auth-info {
+    align-content: center;
+    display: grid;
+}
+
+.auth-panel h1,
+.auth-panel h2 {
+    margin-top: 0;
+}
+
+.auth-panel form p {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-panel input {
+    border: 2px solid var(--coal);
+    border-radius: 8px;
+    font: inherit;
+    padding: 10px;
+}
+
+.form-button {
+    cursor: pointer;
+    width: 100%;
+}
+
+.auth-switch {
+    margin-bottom: 0;
+    margin-top: 18px;
+}
+
+.auth-switch a {
+    color: var(--coal);
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+    .auth-layout {
+        grid-template-columns: 1fr;
+        margin-top: 24px;
+    }
+
+    .auth-panel {
+        min-height: auto;
+    }
+}
