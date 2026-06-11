@@ -37,3 +37,11 @@ This file records manual testing completed throughout development.
 | T031 | Empty games state | Opened games page with no games saved. | Empty state message displays. | Pass | Confirms the template handles an empty collection. |
 | T032 | Games navbar link | Clicked `GAMES` in the authenticated navbar. | Browser opens `/games/`. | Pass | Confirms navbar route is connected. |
 | T033 | Table heading sort links | Clicked table heading sort links on the empty games table page. | Page reloads without error. | Pass | Sorting links are available and safe even before games are added. |
+| T033 | Table heading sort links | Clicked table heading sort links on the empty games table page. | Page reloads without error. | Pass | Sorting links are available and safe even before games are added. |
+| T034 | Add game route | Clicked `ADD GAME` from the games page. | Add Game form opens. | Pass | Confirms the create route, view and template are connected. |
+| T035 | Add game form display | Opened the Add Game page. | Game fields, favourite checkbox and image upload field are visible. | Pass | Initial field rendering issue was fixed by replacing `as_field_group` with explicit label, field and error rendering. |
+| T036 | Create game | Submitted valid game details. | Game is saved and user is redirected to the games list. | Pass | New game appears in the table. |
+| T037 | Game owner assignment | Created a game while logged in. | Game belongs to the logged-in user automatically. | Pass | Owner field is not exposed in the form and is set in the view. |
+| T038 | Game image upload field | Opened the Add Game form. | Image upload field is displayed. | Pass | Field is visible; actual upload/save will be tested when media display is added. |
+| T039 | Favourite field | Tick marked a game as favourite during creation. | Game saves with favourite status. | Pass | Favourite value appears in the games table. |
+| T040 | Game form validation | Submitted one-character title and platform values. | Form rejects invalid data and displays errors. | Pass | Confirms custom `GameForm` validation works. |

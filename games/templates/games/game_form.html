@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }} | GameShelf{% endblock %}
+
+{% block content %}
+<section class="game-form-shell panel">
+    <div class="form-heading">
+        <div>
+            <p class="eyebrow">Games</p>
+            <h1>{{ page_title }}</h1>
+        </div>
+
+        <a class="button button-secondary" href="{% url 'games_list' %}">
+            Back to Games
+        </a>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="game-form">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="message message-error">
+                Please fix the errors below.
+            </div>
+        {% endif %}
+
+        <div class="form-grid">
+            <div class="form-main panel">
+                <div>
+                    {{ form.title.label_tag }}
+                    {{ form.title }}
+                    {{ form.title.errors }}
+                </div>
+
+                <div>
+                    {{ form.game_type.label_tag }}
+                    {{ form.game_type }}
+                    {{ form.game_type.errors }}
+                </div>
+
+                <div>
+                    {{ form.platform.label_tag }}
+                    {{ form.platform }}
+                    {{ form.platform.errors }}
+                </div>
+
+                <div>
+                    {{ form.ownership_status.label_tag }}
+                    {{ form.ownership_status }}
+                    {{ form.ownership_status.errors }}
+                </div>
+
+                <div>
+                    {{ form.format.label_tag }}
+                    {{ form.format }}
+                    {{ form.format.errors }}
+                </div>
+
+                <div>
+                    {{ form.genre.label_tag }}
+                    {{ form.genre }}
+                    {{ form.genre.errors }}
+                </div>
+
+                <div>
+                    {{ form.player_count.label_tag }}
+                    {{ form.player_count }}
+                    {{ form.player_count.errors }}
+                </div>
+
+                <div>
+                    {{ form.purchase_date.label_tag }}
+                    {{ form.purchase_date }}
+                    {{ form.purchase_date.errors }}
+                </div>
+
+                <div>
+                    {{ form.notes.label_tag }}
+                    {{ form.notes }}
+                    {{ form.notes.errors }}
+                </div>
+            </div>
+
+            <aside class="form-side panel">
+                <label class="favourite-toggle">
+                    {{ form.favourite }}
+                    <span>Mark as favourite</span>
+                </label>
+
+                <div>
+                    {{ form.image.label_tag }}
+                    {{ form.image }}
+                    {{ form.image.errors }}
+                </div>
+
+                <div class="image-placeholder">
+                    Image upload preview area
+                </div>
+            </aside>
+        </div>
+
+        <button class="button save-button" type="submit">Save Game</button>
+    </form>
+</section>
+{% endblock %}

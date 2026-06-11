@@ -5,7 +5,7 @@
 {% block content %}
 <section class="games-layout">
     <aside class="games-sidebar panel">
-        <a class="button add-game-button" href="#">ADD GAME</a>
+        <a class="button add-game-button" href="{% url 'game_create' %}">ADD GAME</a>
 
         <form method="get" class="filter-form">
             <label for="q">Search game</label>

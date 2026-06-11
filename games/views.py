@@ -1,7 +1,9 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
+from .forms import GameForm
 from .models import Game
 
 # Create your views here.
@@ -82,3 +84,21 @@ def games_list(request):
     }
 
     return render(request, 'games/games_list.html', context)
+
+
+@login_required
+def game_create(request):
+    if request.method == 'POST':
+        form = GameForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            game = form.save(commit=False)
+            game.owner = request.user
+            game.save()
+
+            messages.success(request, 'Game added to your shelf.')
+            return redirect('games_list')
+    else:
+        form = GameForm()
+
+    return render(request, 'games/game_form.html', {'form': form, 'page_title': 'Add Game'})

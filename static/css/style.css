@@ -1,4 +1,4 @@
-/* -- Global Theme -- */
+/*-- Global Theme --*/
 
 :root {
     --accent: #C2D8C4;
@@ -23,7 +23,7 @@ body {
 }
 
 
-/* -- Shared Layout -- */
+/*-- Shared Layout --*/
 
 .site-header {
     background: #000000;
@@ -112,7 +112,7 @@ body {
 }
 
 
-/*  -- Messages -- */
+/*-- Messages -*/
 
 .message {
     border: 2px solid var(--coal);
@@ -130,7 +130,7 @@ body {
 }
 
 
-/* -- Homepage -- */
+/*-- Homepage --*/
 
 .home-hero {
     align-items: center;
@@ -181,7 +181,7 @@ body {
 }
 
 
-/* -- Authentication Pages -- */
+/*-- Authentication Pages --*/
 
 .auth-layout {
     display: grid;
@@ -234,7 +234,7 @@ body {
 }
 
 
-/* -- Games List Page -- */
+/*-- Games List Page --*/
 
 .games-layout {
     display: grid;
@@ -336,11 +336,94 @@ body {
     text-align: center;
 }
 
+/*-- Game Form Page --*/
 
-/* -- Responsive Styles -- */
+.game-form-shell {
+    margin: 18px auto;
+    max-width: 1200px;
+}
+
+.form-heading {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.form-heading h1 {
+    margin: 0;
+}
+
+.game-form {
+    display: grid;
+    gap: 18px;
+}
+
+.form-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr 320px;
+}
+
+.form-main,
+.form-side {
+    display: grid;
+    gap: 14px;
+}
+
+.form-main div,
+.form-side div {
+    display: grid;
+    gap: 6px;
+}
+
+.form-main input,
+.form-main select,
+.form-main textarea,
+.form-side input {
+    border: 2px solid var(--coal);
+    border-radius: 8px;
+    font: inherit;
+    padding: 10px;
+    width: 100%;
+}
+
+.favourite-toggle {
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    gap: 10px;
+}
+
+.favourite-toggle input {
+    width: auto;
+}
+
+.image-placeholder {
+    align-content: center;
+    border: 2px dashed var(--coal);
+    border-radius: 10px;
+    color: #666666;
+    display: grid;
+    min-height: 190px;
+    padding: 18px;
+    text-align: center;
+}
+
+.save-button {
+    cursor: pointer;
+    justify-self: end;
+}
+
+/*-- Responsive Styles --*/
 
 @media (max-width: 900px) {
     .games-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
         grid-template-columns: 1fr;
     }
 }
