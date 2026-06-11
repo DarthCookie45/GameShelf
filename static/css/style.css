@@ -1,9 +1,14 @@
+/* -- Global Theme -- */
+
 :root {
     --accent: #C2D8C4;
     --coal: #222222;
     --page: #ffffff;
     --text: #222222;
     --border: #222222;
+    --premium: #ffe45c;
+    --error: #ffd6d6;
+    --muted-row: #f5f5f5;
 }
 
 * {
@@ -16,6 +21,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 }
+
+
+/* -- Shared Layout -- */
 
 .site-header {
     background: #000000;
@@ -65,7 +73,7 @@ body {
 }
 
 .premium-link {
-    color: #ffe45c !important;
+    color: var(--premium) !important;
     font-weight: bold;
 }
 
@@ -103,6 +111,9 @@ body {
     filter: brightness(0.95);
 }
 
+
+/*  -- Messages -- */
+
 .message {
     border: 2px solid var(--coal);
     border-radius: 8px;
@@ -115,8 +126,11 @@ body {
 }
 
 .message-error {
-    background: #ffd6d6;
+    background: var(--error);
 }
+
+
+/* -- Homepage -- */
 
 .home-hero {
     align-items: center;
@@ -166,26 +180,8 @@ body {
     margin-top: 0;
 }
 
-@media (max-width: 800px) {
-    .navbar {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-        padding: 18px;
-    }
 
-    .nav-links {
-        flex-wrap: wrap;
-    }
-
-    .page-shell {
-        padding: 18px;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* -- Authentication Pages -- */
 
 .auth-layout {
     display: grid;
@@ -237,9 +233,140 @@ body {
     font-weight: bold;
 }
 
+
+/* -- Games List Page -- */
+
+.games-layout {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 255px 1fr;
+}
+
+.games-sidebar,
+.games-table-panel {
+    min-height: 500px;
+}
+
+.add-game-button {
+    display: block;
+    margin: 0 auto 20px;
+    text-align: center;
+    width: fit-content;
+}
+
+.filter-form {
+    display: grid;
+    gap: 10px;
+}
+
+.filter-form label {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.filter-form input,
+.filter-form select {
+    border: 2px solid var(--coal);
+    border-radius: 8px;
+    font: inherit;
+    padding: 9px;
+    width: 100%;
+}
+
+.checkbox-label {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+}
+
+.checkbox-label input {
+    width: auto;
+}
+
+.filter-button {
+    cursor: pointer;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.clear-link {
+    color: var(--coal);
+    font-weight: bold;
+    text-align: center;
+}
+
+.games-table-panel h1 {
+    margin-top: 0;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.games-table {
+    border-collapse: collapse;
+    min-width: 850px;
+    width: 100%;
+}
+
+.games-table th,
+.games-table td {
+    border-bottom: 1px solid #dddddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.games-table th {
+    background: var(--accent);
+}
+
+.games-table th a {
+    color: var(--coal);
+    text-decoration: none;
+}
+
+.games-table tr:hover {
+    background: var(--muted-row);
+}
+
+.empty-state {
+    align-content: center;
+    display: grid;
+    min-height: 320px;
+    text-align: center;
+}
+
+
+/* -- Responsive Styles -- */
+
+@media (max-width: 900px) {
+    .games-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 800px) {
+    .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+    }
+
+    .page-shell {
+        padding: 18px;
+    }
+
+    .feature-grid,
     .auth-layout {
         grid-template-columns: 1fr;
+    }
+
+    .auth-layout {
         margin-top: 24px;
     }
 

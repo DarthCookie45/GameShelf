@@ -31,3 +31,9 @@ This file records manual testing completed throughout development.
 | T025 | Game form setup | Created `GameForm` and ran `python manage.py check`. | Django reports no system check issues. | Pass | Form includes editable game fields but does not expose the owner field. |
 | T026 | Game title validation | Added validation requiring game titles to contain at least two characters. | One-character titles will be rejected by the form. | Pass | Validation will be manually tested when the add game page is created. |
 | T027 | Game platform validation | Added validation requiring platform text to contain at least two characters. | One-character platform values will be rejected by the form. | Pass | Validation will be manually tested when the add game page is created. |
+| T028 | Games route protection | Visited `/games/` while logged out. | User is redirected to the login page. | Pass | Confirms the games collection is protected by login. |
+| T029 | Login redirect to games | Logged in with valid details. | User is redirected to the games collection page. | Pass | `LOGIN_REDIRECT_URL` points to `games_list` after the route was created. |
+| T030 | Games page layout | Opened `/games/` while logged in. | Games page displays sidebar filters and table panel. | Pass | Layout follows the planned wireframe. |
+| T031 | Empty games state | Opened games page with no games saved. | Empty state message displays. | Pass | Confirms the template handles an empty collection. |
+| T032 | Games navbar link | Clicked `GAMES` in the authenticated navbar. | Browser opens `/games/`. | Pass | Confirms navbar route is connected. |
+| T033 | Table heading sort links | Clicked table heading sort links on the empty games table page. | Page reloads without error. | Pass | Sorting links are available and safe even before games are added. |

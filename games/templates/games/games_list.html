@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}Games | GameShelf{% endblock %}
+
+{% block content %}
+<section class="games-layout">
+    <aside class="games-sidebar panel">
+        <a class="button add-game-button" href="#">ADD GAME</a>
+
+        <form method="get" class="filter-form">
+            <label for="q">Search game</label>
+            <input
+                id="q"
+                name="q"
+                type="search"
+                value="{{ search_query }}"
+                placeholder="Search title, platform or genre"
+            >
+
+            <label for="game_type">Game type</label>
+            <select id="game_type" name="game_type">
+                <option value="">All types</option>
+                {% for value, label in game_type_choices %}
+                    <option value="{{ value }}" {% if selected_game_type == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="ownership_status">Ownership</label>
+            <select id="ownership_status" name="ownership_status">
+                <option value="">All ownership</option>
+                {% for value, label in ownership_choices %}
+                    <option value="{{ value }}" {% if selected_ownership_status == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="format">Format</label>
+            <select id="format" name="format">
+                <option value="">All formats</option>
+                {% for value, label in format_choices %}
+                    <option value="{{ value }}" {% if selected_format == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label class="checkbox-label">
+                <input type="checkbox" name="favourite" {% if selected_favourite == 'on' %}checked{% endif %}>
+                Favourites only
+            </label>
+
+            <button class="button filter-button" type="submit">Apply filters</button>
+            <a class="clear-link" href="{% url 'games_list' %}">Clear filters</a>
+        </form>
+    </aside>
+
+    <section class="games-table-panel panel">
+        <h1>Games</h1>
+
+        {% if games %}
+            <div class="table-wrap">
+                <table class="games-table">
+                    <thead>
+                        <tr>
+                            <th><a href="?sort={{ title_sort }}">Title</a></th>
+                            <th><a href="?sort={{ type_sort }}">Type</a></th>
+                            <th><a href="?sort={{ platform_sort }}">Platform</a></th>
+                            <th><a href="?sort={{ ownership_sort }}">Ownership</a></th>
+                            <th><a href="?sort={{ format_sort }}">Format</a></th>
+                            <th><a href="?sort={{ purchase_sort }}">Purchase Date</a></th>
+                            <th>Favourite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for game in games %}
+                            <tr>
+                                <td>{{ game.title }}</td>
+                                <td>{{ game.get_game_type_display }}</td>
+                                <td>{{ game.platform }}</td>
+                                <td>{{ game.get_ownership_status_display }}</td>
+                                <td>{{ game.get_format_display }}</td>
+                                <td>{{ game.purchase_date|default:'-' }}</td>
+                                <td>{% if game.favourite %}Yes{% else %}No{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h2>No games found</h2>
+                <p>Add your first game or adjust your filters.</p>
+            </div>
+        {% endif %}
+    </section>
+</section>
+{% endblock %}
