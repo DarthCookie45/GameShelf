@@ -55,3 +55,9 @@ This file records manual testing completed throughout development.
 | T048 | Create game with image | Added a game with an uploaded image. | Game saves and image thumbnail appears in the games table. | Pass | Confirms image upload and display work locally. |
 | T049 | Edit game image preview | Opened the edit form for a game with an uploaded image. | Current image appears in the image preview area. | Pass | Confirms uploaded image is available on edit. |
 | T050 | Game without image | Added or viewed a game with no image uploaded. | Table displays `No image` instead of a broken image. | Pass | Confirms empty image field is handled safely. |
+| T051 | Profile route protection | Visited `/accounts/profile/` while logged out. | User is redirected to the login page. | Pass | Confirms profile is protected by login. |
+| T052 | Profile navbar link | Clicked `PROFILE` while logged in. | Profile page opens. | Pass | Confirms navbar route is connected. |
+| T053 | Profile user details | Viewed profile page while logged in. | Username and email/account information display correctly. | Pass | Email displays fallback text when no email is saved. |
+| T054 | Profile account tier | Viewed profile page while logged in. | Account tier displays as Free. | Pass | Premium tier will be added later through Stripe. |
+| T055 | Profile statistics | Viewed profile after creating games. | Total games, favourites and platform count display correctly. | Pass | Confirms stats are calculated from the logged-in user's games. |
+| T056 | Game type statistics | Viewed profile after adding games. | Collection by type counts display correctly. | Pass | Confirms the profile loops through `Game.GAME_TYPE_CHOICES`. |
