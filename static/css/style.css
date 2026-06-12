@@ -419,13 +419,14 @@ body {
 /*-- Edit/Delete Game Actions --*/
 
 .table-actions {
-    display: flex;
-    gap: 12px;
+    white-space: nowrap;
 }
 
 .table-actions a {
     color: var(--coal);
+    display: inline-block;
     font-weight: bold;
+    margin-right: 12px;
 }
 
 .delete-panel {
@@ -450,6 +451,27 @@ body {
 
 .danger-button {
     background: #ffd6d6;
+}
+
+/*-- Game Image --*/
+.game-thumb {
+    border: 2px solid var(--coal);
+    border-radius: 8px;
+    height: 56px;
+    object-fit: cover;
+    width: 56px;
+}
+
+.no-thumb {
+    color: #666666;
+    font-size: 0.9rem;
+}
+
+.image-preview {
+    border-radius: 8px;
+    max-height: 190px;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 /*-- Responsive Styles --*/

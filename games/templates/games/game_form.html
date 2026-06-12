@@ -94,7 +94,11 @@
                 </div>
 
                 <div class="image-placeholder">
-                    Image upload preview area
+                    {% if form.instance.image %}
+                        <img class="image-preview" src="{{ form.instance.image.url }}" alt="{{ form.instance.title }}">
+                    {% else %}
+                        Image upload preview area
+                    {% endif %}
                 </div>
             </aside>
         </div>

@@ -65,6 +65,7 @@
                 <table class="games-table">
                     <thead>
                         <tr>
+                            <th>Image</th>
                             <th><a href="?sort={{ title_sort }}">Title</a></th>
                             <th><a href="?sort={{ type_sort }}">Type</a></th>
                             <th><a href="?sort={{ platform_sort }}">Platform</a></th>
@@ -78,6 +79,13 @@
                     <tbody>
                         {% for game in games %}
                             <tr>
+                                <td>
+                                    {% if game.image %}
+                                        <img class="game-thumb" src="{{ game.image.url }}" alt="{{ game.title }}">
+                                    {% else %}
+                                        <span class="no-thumb">No image</span>
+                                    {% endif %}
+                                </td>
                                 <td>{{ game.title }}</td>
                                 <td>{{ game.get_game_type_display }}</td>
                                 <td>{{ game.platform }}</td>

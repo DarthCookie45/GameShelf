@@ -51,3 +51,7 @@ This file records manual testing completed throughout development.
 | T044 | Cancel delete | Clicked `Cancel` on the delete confirmation page. | User returns to the games list and the game remains saved. | Pass | Confirms users can safely back out of deletion. |
 | T045 | Confirm delete | Confirmed deletion of a saved game. | Game is deleted and user is redirected to the games list. | Pass | Success message confirms deletion. |
 | T046 | Game ownership protection | Edit/delete views use `get_object_or_404(Game, pk=pk, owner=request.user)`. | Users can only access their own game records. | Pass | Protects user-owned data from being edited or deleted by another user. |
+| T047 | Media URL setup | Added media serving to `config/urls.py` and ran `python manage.py check`. | Django reports no system check issues. | Pass | Uploaded files can be served during local development. |
+| T048 | Create game with image | Added a game with an uploaded image. | Game saves and image thumbnail appears in the games table. | Pass | Confirms image upload and display work locally. |
+| T049 | Edit game image preview | Opened the edit form for a game with an uploaded image. | Current image appears in the image preview area. | Pass | Confirms uploaded image is available on edit. |
+| T050 | Game without image | Added or viewed a game with no image uploaded. | Table displays `No image` instead of a broken image. | Pass | Confirms empty image field is handled safely. |
