@@ -4,8 +4,8 @@
 
 {% block content %}
 <section class="profile-actions">
-    <a class="button" href="{% url 'profile' %}">Profile</a>
-    <a class="button button-secondary" href="#">Change Password</a>
+    <a class="button active-tab" href="{% url 'profile' %}">Profile</a>
+    <a class="button button-secondary" href="{% url 'password_change' %}">Change Password</a>
 </section>
 
 <section class="profile-layout">

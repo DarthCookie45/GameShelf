@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
@@ -50,3 +50,14 @@ def profile(request):
     }
 
     return render(request, 'accounts/profile.html', context)
+
+
+# Logout view
+@login_required
+def logout_user(request):
+    if request.method == 'POST':
+        logout(request)
+        messages.success(request, 'You have been logged out successfully.')
+        return redirect('home')
+
+    return redirect('home')

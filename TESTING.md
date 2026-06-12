@@ -61,3 +61,13 @@ This file records manual testing completed throughout development.
 | T054 | Profile account tier | Viewed profile page while logged in. | Account tier displays as Free. | Pass | Premium tier will be added later through Stripe. |
 | T055 | Profile statistics | Viewed profile after creating games. | Total games, favourites and platform count display correctly. | Pass | Confirms stats are calculated from the logged-in user's games. |
 | T056 | Game type statistics | Viewed profile after adding games. | Collection by type counts display correctly. | Pass | Confirms the profile loops through `Game.GAME_TYPE_CHOICES`. |
+| T057 | Custom logout view | Clicked `LOGOUT` while logged in. | User is logged out and redirected to the homepage. | Pass | Logout now uses a custom view in `accounts.views`. |
+| T058 | Logout success message | Logged out through the navbar form. | Success message appears on the homepage. | Pass | Confirms user feedback is shown after logout. |
+| T059 | Logout POST protection | Confirmed logout is submitted through a POST form with CSRF token. | Logout is protected from simple GET link actions. | Pass | Improves authentication safety. |
+| T060 | Change password route | Clicked `Change Password` from the profile page. | Password change page opens. | Pass | Uses Django's built-in auth URL routes. |
+| T061 | Styled password change page | Clicked `Change Password` from the profile page. | Styled GameShelf password change form displays. | Pass | Overrides Django's default `password_change_form.html` template. |
+| T062 | Password change validation | Submitted the password change form with empty or invalid fields. | Form reloads and displays validation errors. | Pass | Confirms Django validation is visible in the styled template. |
+| T063 | Successful password change | Submitted valid old password and matching new password values. | Password is changed and success page displays. | Pass | Confirms Django's password change flow works. |
+| T064 | Styled password success page | Viewed password change done page after successful update. | Styled GameShelf success page displays. | Pass | Overrides Django's default `password_change_done.html` template. |
+| T065 | Login with new password | Logged out and logged back in using the new password. | Login succeeds with the updated password. | Pass | Confirms the password was actually changed. |
+| T066 | Profile tab navigation | Viewed profile and password change pages. | Profile/Change Password buttons display on both pages with the active page highlighted. | Pass | Improves navigation clarity between account pages. |

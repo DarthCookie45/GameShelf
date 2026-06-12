@@ -233,6 +233,10 @@ body {
     font-weight: bold;
 }
 
+.auth-panel .button.form-button {
+    text-align: center;
+}
+
 
 /*-- Games List Page --*/
 
@@ -571,6 +575,10 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
+}
+
+.active-tab {
+    background: var(--accent);
 }
 
 /*-- Responsive Styles --*/
