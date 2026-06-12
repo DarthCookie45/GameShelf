@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Game | GameShelf{% endblock %}
+
+{% block content %}
+<section class="delete-panel panel">
+    <p class="eyebrow">Games</p>
+    <h1>Delete Game</h1>
+
+    <p>
+        Are you sure you want to delete
+        <strong>{{ game.title }}</strong>?
+    </p>
+
+    <p class="delete-warning">
+        This action cannot be undone.
+    </p>
+
+    <form method="post" class="delete-actions">
+        {% csrf_token %}
+        <button class="button danger-button" type="submit">Delete Game</button>
+        <a class="button button-secondary" href="{% url 'games_list' %}">Cancel</a>
+    </form>
+</section>
+{% endblock %}

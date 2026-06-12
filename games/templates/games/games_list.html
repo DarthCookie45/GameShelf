@@ -72,6 +72,7 @@
                             <th><a href="?sort={{ format_sort }}">Format</a></th>
                             <th><a href="?sort={{ purchase_sort }}">Purchase Date</a></th>
                             <th>Favourite</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,6 +85,10 @@
                                 <td>{{ game.get_format_display }}</td>
                                 <td>{{ game.purchase_date|default:'-' }}</td>
                                 <td>{% if game.favourite %}Yes{% else %}No{% endif %}</td>
+                                <td class="table-actions">
+                                    <a href="{% url 'game_update' game.pk %}">Edit</a>
+                                    <a href="{% url 'game_delete' game.pk %}">Delete</a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>

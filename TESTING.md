@@ -45,3 +45,9 @@ This file records manual testing completed throughout development.
 | T038 | Game image upload field | Opened the Add Game form. | Image upload field is displayed. | Pass | Field is visible; actual upload/save will be tested when media display is added. |
 | T039 | Favourite field | Tick marked a game as favourite during creation. | Game saves with favourite status. | Pass | Favourite value appears in the games table. |
 | T040 | Game form validation | Submitted one-character title and platform values. | Form rejects invalid data and displays errors. | Pass | Confirms custom `GameForm` validation works. |
+| T041 | Edit game route | Clicked `Edit` on a saved game. | Edit Game form opens with existing game details filled in. | Pass | Confirms update route, view and form instance are connected. |
+| T042 | Update game | Changed a saved game's details and submitted the form. | Game updates and user is redirected to the games list. | Pass | Success message confirms update. |
+| T043 | Delete game route | Clicked `Delete` on a saved game. | Delete confirmation page opens. | Pass | Confirms delete route and template are connected. |
+| T044 | Cancel delete | Clicked `Cancel` on the delete confirmation page. | User returns to the games list and the game remains saved. | Pass | Confirms users can safely back out of deletion. |
+| T045 | Confirm delete | Confirmed deletion of a saved game. | Game is deleted and user is redirected to the games list. | Pass | Success message confirms deletion. |
+| T046 | Game ownership protection | Edit/delete views use `get_object_or_404(Game, pk=pk, owner=request.user)`. | Users can only access their own game records. | Pass | Protects user-owned data from being edited or deleted by another user. |

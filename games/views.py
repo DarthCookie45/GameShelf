@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import GameForm
 from .models import Game
@@ -102,3 +102,32 @@ def game_create(request):
         form = GameForm()
 
     return render(request, 'games/game_form.html', {'form': form, 'page_title': 'Add Game'})
+
+
+@login_required
+def game_update(request, pk):
+    game = get_object_or_404(Game, pk=pk, owner=request.user)
+
+    if request.method == 'POST':
+        form = GameForm(request.POST, request.FILES, instance=game)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Game updated successfully.')
+            return redirect('games_list')
+    else:
+        form = GameForm(instance=game)
+
+    return render(request, 'games/game_form.html', {'form': form, 'page_title': 'Edit Game'})
+
+
+@login_required
+def game_delete(request, pk):
+    game = get_object_or_404(Game, pk=pk, owner=request.user)
+
+    if request.method == 'POST':
+        game.delete()
+        messages.success(request, 'Game deleted successfully.')
+        return redirect('games_list')
+
+    return render(request, 'games/game_confirm_delete.html', {'game': game})

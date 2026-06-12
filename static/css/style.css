@@ -416,6 +416,42 @@ body {
     justify-self: end;
 }
 
+/*-- Edit/Delete Game Actions --*/
+
+.table-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.table-actions a {
+    color: var(--coal);
+    font-weight: bold;
+}
+
+.delete-panel {
+    margin: 80px auto 0;
+    max-width: 620px;
+}
+
+.delete-panel h1 {
+    margin-top: 0;
+}
+
+.delete-warning {
+    font-weight: bold;
+}
+
+.delete-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.danger-button {
+    background: #ffd6d6;
+}
+
 /*-- Responsive Styles --*/
 
 @media (max-width: 900px) {
