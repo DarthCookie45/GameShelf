@@ -92,3 +92,9 @@ This file records manual testing completed throughout development.
 | T085 | Premium route protection | Visited `/checkout/premium/` while logged out. | User is redirected to login. | Pass | Confirms premium page requires authentication. |
 | T086 | Premium locked state | Viewed premium page while logged in without premium access. | Premium locked content displays. | Pass | Confirms free users cannot see unlocked premium content. |
 | T087 | Premium navbar link | Clicked `PREMIUM` in the authenticated navbar. | Premium page opens. | Pass | Confirms navbar link is connected. |
+| T088 | Stripe package install | Installed `stripe` and updated `requirements.txt`. | Stripe package is available to the project. | Pass | Required for Stripe Checkout integration. |
+| T089 | Stripe settings | Added Stripe environment variable settings and ran `python manage.py check`. | Django reports no system check issues. | Pass | Secret keys are read from environment variables, not hard-coded. |
+| T090 | Checkout session creation | Clicked `Unlock Premium` while logged in with Stripe keys configured. | User is redirected to Stripe Checkout. | Pass | Confirms server creates a Stripe Checkout Session. |
+| T091 | Successful premium payment | Completed Stripe test payment using test card `4242 4242 4242 4242`. | User returns to GameShelf and premium access is unlocked. | Pass | `PremiumAccess` is created/updated after verifying Stripe session payment status. |
+| T092 | Premium unlocked state | Viewed premium page after payment. | Premium unlocked content displays. | Pass | Confirms paid users see premium content. |
+| T093 | Cancelled Stripe payment | Started checkout and cancelled before payment. | User returns to premium page with cancellation message. | Pass | Confirms cancelled payment does not unlock premium. |

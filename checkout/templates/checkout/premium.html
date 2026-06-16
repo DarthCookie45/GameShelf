@@ -47,7 +47,10 @@
                 <li>Future accent colour customisation</li>
             </ul>
 
-            <a class="button" href="#">Unlock Premium - £4.99</a>
+            <form method="post" action="{% url 'create_checkout_session' %}">
+                {% csrf_token %}
+                <button class="button" type="submit">Unlock Premium - £4.99</button>
+            </form>
         </section>
     {% endif %}
 </section>
