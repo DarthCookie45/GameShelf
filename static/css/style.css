@@ -711,6 +711,24 @@ body {
     margin-bottom: 24px;
 }
 
+/*-- Premium Visual State --*/
+
+.premium-header {
+    background: linear-gradient(90deg, #000000, #1d1d1d, #2d2610);
+}
+
+.premium-badge {
+    background: var(--premium);
+    border-radius: 999px;
+    color: var(--coal);
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-left: 8px;
+    padding: 3px 8px;
+    vertical-align: middle;
+}
+
 /*-- Responsive Styles --*/
 
 @media (max-width: 900px) {

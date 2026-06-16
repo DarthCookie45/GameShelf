@@ -98,3 +98,8 @@ This file records manual testing completed throughout development.
 | T091 | Successful premium payment | Completed Stripe test payment using test card `4242 4242 4242 4242`. | User returns to GameShelf and premium access is unlocked. | Pass | `PremiumAccess` is created/updated after verifying Stripe session payment status. |
 | T092 | Premium unlocked state | Viewed premium page after payment. | Premium unlocked content displays. | Pass | Confirms paid users see premium content. |
 | T093 | Cancelled Stripe payment | Started checkout and cancelled before payment. | User returns to premium page with cancellation message. | Pass | Confirms cancelled payment does not unlock premium. |
+| T094 | Premium context processor | Added premium context processor and ran `python manage.py check`. | Django reports no system check issues. | Pass | Templates can access premium status globally. |
+| T095 | Premium navbar badge | Logged in as a premium user. | Navbar displays `GAMESHELF PREMIUM`. | Pass | Confirms premium status changes the shared layout. |
+| T096 | Premium navbar styling | Logged in as a premium user. | Navbar displays premium visual styling. | Pass | Confirms paid users receive a visible premium state. |
+| T097 | Premium profile tier | Viewed profile as a premium user. | Account tier displays as Premium. | Pass | Confirms profile uses premium access status. |
+| T098 | Free user visual state | Logged in as a non-premium user. | Navbar has no premium badge and profile tier displays Free. | Pass | Confirms premium UI is only shown to paid users. |

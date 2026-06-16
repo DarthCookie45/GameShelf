@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
+from checkout.utils import user_has_premium
 
 from games.models import Game, PlaySession
 
@@ -48,7 +49,7 @@ def profile(request):
         'platform_count': platform_count,
         'total_play_sessions': total_play_sessions,
         'game_type_stats': game_type_stats,
-        'account_tier': 'Free',
+        'account_tier': 'Premium' if user_has_premium(request.user) else 'Free',
     }
 
     return render(request, 'accounts/profile.html', context)
