@@ -71,3 +71,8 @@ This file records manual testing completed throughout development.
 | T064 | Styled password success page | Viewed password change done page after successful update. | Styled GameShelf success page displays. | Pass | Overrides Django's default `password_change_done.html` template. |
 | T065 | Login with new password | Logged out and logged back in using the new password. | Login succeeds with the updated password. | Pass | Confirms the password was actually changed. |
 | T066 | Profile tab navigation | Viewed profile and password change pages. | Profile/Change Password buttons display on both pages with the active page highlighted. | Pass | Improves navigation clarity between account pages. |
+| T067 | PlaySession model setup | Added `PlaySession` model and ran `python manage.py check`. | Django reports no system check issues. | Pass | Confirms second custom model and relationship to `Game` are valid. |
+| T068 | PlaySession migration | Ran `python manage.py makemigrations` and `python manage.py migrate`. | PlaySession database table is created successfully. | Pass | Confirms the model was added to the database. |
+| T069 | PlaySession admin setup | Registered `PlaySession` in Django admin and ran checks. | Django reports no admin configuration issues. | Pass | Confirms play sessions can be managed through admin if needed. |
+| T070 | PlaySession form setup | Added `PlaySessionForm` and ran checks. | Django reports no form-related issues. | Pass | Form will be used when adding play session pages. |
+| T071 | Profile play session statistic | Viewed profile after adding PlaySession count to context. | Profile displays play session count. | Pass | Confirms profile stats can include related model data. |

@@ -73,3 +73,23 @@ class Game(models.Model):
 
     def get_absolute_url(self):
         return reverse('game_detail', kwargs={'pk': self.pk})
+    
+
+class PlaySession(models.Model):
+    game = models.ForeignKey(
+        Game,
+        on_delete=models.CASCADE,
+        related_name='play_sessions',
+    )
+    date_played = models.DateField()
+    players = models.CharField(max_length=255)
+    winner = models.CharField(max_length=120, blank=True)
+    result_summary = models.CharField(max_length=255, blank=True)
+    notes = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-date_played', '-created_at']
+
+    def __str__(self):
+        return f'{self.game.title} on {self.date_played}'

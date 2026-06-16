@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Game
+from .models import Game, PlaySession
 
 
 class GameForm(forms.ModelForm):
@@ -39,3 +39,21 @@ class GameForm(forms.ModelForm):
             raise forms.ValidationError('Please enter a platform or game format.')
 
         return platform
+
+
+class PlaySessionForm(forms.ModelForm):
+    class Meta:
+        model = PlaySession
+        fields = ['date_played', 'players', 'winner', 'result_summary', 'notes']
+        widgets = {
+            'date_played': forms.DateInput(attrs={'type': 'date'}),
+            'notes': forms.Textarea(attrs={'rows': 4}),
+        }
+
+    def clean_players(self):
+        players = self.cleaned_data['players'].strip()
+
+        if len(players) < 2:
+            raise forms.ValidationError('Please enter at least one player.')
+
+        return players

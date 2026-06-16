@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 
-from games.models import Game
+from games.models import Game, PlaySession
 
 # Create your views here.
 # Register view
@@ -35,6 +35,7 @@ def profile(request):
     favourite_games = user_games.filter(favourite=True).count()
     platforms = user_games.values_list('platform', flat=True).distinct()
     platform_count = platforms.count()
+    total_play_sessions = PlaySession.objects.filter(game__owner=request.user).count()
 
     game_type_stats = {}
 
@@ -45,6 +46,7 @@ def profile(request):
         'total_games': total_games,
         'favourite_games': favourite_games,
         'platform_count': platform_count,
+        'total_play_sessions': total_play_sessions,
         'game_type_stats': game_type_stats,
         'account_tier': 'Free',
     }
