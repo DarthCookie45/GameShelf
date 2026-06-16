@@ -103,3 +103,4 @@ This file records manual testing completed throughout development.
 | T096 | Premium navbar styling | Logged in as a premium user. | Navbar displays premium visual styling. | Pass | Confirms paid users receive a visible premium state. |
 | T097 | Premium profile tier | Viewed profile as a premium user. | Account tier displays as Premium. | Pass | Confirms profile uses premium access status. |
 | T098 | Free user visual state | Logged in as a non-premium user. | Navbar has no premium badge and profile tier displays Free. | Pass | Confirms premium UI is only shown to paid users. |
+| T099 | Homepage start button | Clicked `Start your shelf` as logged-out and logged-in user. | Logged-out users go to register; logged-in users go to games list. | Pass | Replaced placeholder `#` link with real navigation. |

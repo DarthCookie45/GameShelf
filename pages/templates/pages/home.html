@@ -19,7 +19,11 @@
         </p>
 
         <div class="hero-actions">
-            <a class="button" href="#">Start your shelf</a>
+            {% if user.is_authenticated %}
+                <a class="button" href="{% url 'games_list' %}">Start your shelf</a>
+            {% else %}
+                <a class="button" href="{% url 'register' %}">Start your shelf</a>
+            {% endif %}
         </div>
     </div>
 </section>
