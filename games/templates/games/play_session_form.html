@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Log Play Session | GameShelf{% endblock %}
+
+{% block content %}
+<section class="game-form-shell panel">
+    <div class="form-heading">
+        <div>
+            <p class="eyebrow">Play Session</p>
+            <h1>Log Play: {{ game.title }}</h1>
+        </div>
+
+        <a class="button button-secondary" href="{% url 'games_list' %}">
+            Back to Games
+        </a>
+    </div>
+
+    <form method="post" class="game-form">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="message message-error">
+                Please fix the errors below.
+            </div>
+        {% endif %}
+
+        <div class="form-main panel">
+            <div>
+                {{ form.date_played.label_tag }}
+                {{ form.date_played }}
+                {{ form.date_played.errors }}
+            </div>
+
+            <div>
+                {{ form.players.label_tag }}
+                {{ form.players }}
+                {{ form.players.errors }}
+            </div>
+
+            <div>
+                {{ form.winner.label_tag }}
+                {{ form.winner }}
+                {{ form.winner.errors }}
+            </div>
+
+            <div>
+                {{ form.result_summary.label_tag }}
+                {{ form.result_summary }}
+                {{ form.result_summary.errors }}
+            </div>
+
+            <div>
+                {{ form.notes.label_tag }}
+                {{ form.notes }}
+                {{ form.notes.errors }}
+            </div>
+        </div>
+
+        <button class="button save-button" type="submit">Save Play Session</button>
+    </form>
+</section>
+{% endblock %}

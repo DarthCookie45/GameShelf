@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import GameForm
-from .models import Game
+from .forms import GameForm, PlaySessionForm
+from .models import Game, PlaySession
 
 # Create your views here.
 def get_sort_url(current_sort, field_name):
@@ -131,3 +131,28 @@ def game_delete(request, pk):
         return redirect('games_list')
 
     return render(request, 'games/game_confirm_delete.html', {'game': game})
+
+
+@login_required
+def play_session_create(request, game_pk):
+    game = get_object_or_404(Game, pk=game_pk, owner=request.user)
+
+    if request.method == 'POST':
+        form = PlaySessionForm(request.POST)
+
+        if form.is_valid():
+            play_session = form.save(commit=False)
+            play_session.game = game
+            play_session.save()
+
+            messages.success(request, 'Play session added successfully.')
+            return redirect('games_list')
+    else:
+        form = PlaySessionForm()
+
+    context = {
+        'form': form,
+        'game': game,
+    }
+
+    return render(request, 'games/play_session_form.html', context)

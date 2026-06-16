@@ -76,3 +76,8 @@ This file records manual testing completed throughout development.
 | T069 | PlaySession admin setup | Registered `PlaySession` in Django admin and ran checks. | Django reports no admin configuration issues. | Pass | Confirms play sessions can be managed through admin if needed. |
 | T070 | PlaySession form setup | Added `PlaySessionForm` and ran checks. | Django reports no form-related issues. | Pass | Form will be used when adding play session pages. |
 | T071 | Profile play session statistic | Viewed profile after adding PlaySession count to context. | Profile displays play session count. | Pass | Confirms profile stats can include related model data. |
+| T072 | Log play session route | Clicked `Log Play` for a saved game. | Play session form opens for the selected game. | Pass | Confirms play session route and ownership lookup work. |
+| T073 | Create play session | Submitted valid play session details. | Play session is saved and user is redirected to the games list. | Pass | Success message confirms the session was added. |
+| T074 | Play session game relationship | Created a play session from a game row. | Play session is attached to the selected game. | Pass | The game field is set in the view and not exposed to the user. |
+| T075 | Play session validation | Submitted the play session form with missing/invalid player details. | Form displays validation errors. | Pass | Confirms `PlaySessionForm` validation works. |
+| T076 | Profile play session count update | Added a play session and viewed profile. | Play session statistic increases. | Pass | Confirms profile stats use related play session data. |
