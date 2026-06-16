@@ -22,7 +22,7 @@
                     <span>|</span>
                     <a href="{% url 'profile' %}">PROFILE</a>
                     <span>|</span>
-                    <a class="premium-link" href="#">PREMIUM</a>
+                    <a class="premium-link" href="{% url 'premium' %}">PREMIUM</a>
                     <span>|</span>
                     <form class="logout-form" action="{% url 'logout' %}" method="post">
                         {% csrf_token %}

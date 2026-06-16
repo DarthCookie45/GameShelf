@@ -86,3 +86,9 @@ This file records manual testing completed throughout development.
 | T079 | Play session history | Viewed detail page for a game with a play session. | Play session appears in the history panel. | Pass | Confirms related play sessions display under the correct game. |
 | T080 | Empty play session history | Viewed detail page for a game with no play sessions. | Empty session message displays. | Pass | Confirms detail page handles games without sessions. |
 | T081 | Detail page action links | Used Add Session, Edit Game, Delete Game and Back to Games buttons from detail page. | Each link opens the correct page. | Pass | Confirms detail page navigation works. |
+| T082 | PremiumAccess model setup | Added `PremiumAccess` model and ran `python manage.py check`. | Django reports no system check issues. | Pass | Confirms premium access can be stored per user. |
+| T083 | PremiumAccess migration | Ran `python manage.py makemigrations` and `python manage.py migrate`. | PremiumAccess table is created successfully. | Pass | Confirms premium model was added to the database. |
+| T084 | Premium admin setup | Registered `PremiumAccess` in Django admin and ran checks. | Django reports no admin configuration issues. | Pass | Premium records can be managed through admin if needed. |
+| T085 | Premium route protection | Visited `/checkout/premium/` while logged out. | User is redirected to login. | Pass | Confirms premium page requires authentication. |
+| T086 | Premium locked state | Viewed premium page while logged in without premium access. | Premium locked content displays. | Pass | Confirms free users cannot see unlocked premium content. |
+| T087 | Premium navbar link | Clicked `PREMIUM` in the authenticated navbar. | Premium page opens. | Pass | Confirms navbar link is connected. |

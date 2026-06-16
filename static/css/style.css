@@ -668,6 +668,49 @@ body {
     font-weight: bold;
 }
 
+/*-- Premium Page --*/
+
+.premium-page {
+    margin: 30px auto;
+    max-width: 1100px;
+}
+
+.premium-heading {
+    margin-bottom: 28px;
+}
+
+.premium-heading h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    margin: 0 0 16px;
+}
+
+.premium-unlocked,
+.premium-locked {
+    border: 2px solid var(--coal);
+    border-radius: 10px;
+    padding: 24px;
+}
+
+.premium-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 18px;
+}
+
+.premium-grid article {
+    background: var(--accent);
+    border: 2px solid var(--coal);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.premium-list {
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
 /*-- Responsive Styles --*/
 
 @media (max-width: 900px) {
@@ -686,6 +729,10 @@ body {
 
     .detail-layout,
     .game-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .premium-grid {
         grid-template-columns: 1fr;
     }
 }

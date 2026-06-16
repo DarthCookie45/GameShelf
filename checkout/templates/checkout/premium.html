@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Premium | GameShelf{% endblock %}
+
+{% block content %}
+<section class="premium-page panel">
+    <div class="premium-heading">
+        <p class="eyebrow">Premium Plan</p>
+        <h1>GameShelf Premium</h1>
+        <p>
+            Unlock extra collection insights and a premium visual state for your account.
+        </p>
+    </div>
+
+    {% if has_premium %}
+        <section class="premium-unlocked">
+            <h2>Premium unlocked</h2>
+            <p>Your account has access to premium collection tools.</p>
+
+            <div class="premium-grid">
+                <article>
+                    <h3>Collection Insights</h3>
+                    <p>View extra stats based on your saved games and play sessions.</p>
+                </article>
+
+                <article>
+                    <h3>Premium Identity</h3>
+                    <p>Your account will display a premium state in your profile and navbar.</p>
+                </article>
+
+                <article>
+                    <h3>Future Accent Colours</h3>
+                    <p>Premium users will be able to customise the app accent colour.</p>
+                </article>
+            </div>
+        </section>
+    {% else %}
+        <section class="premium-locked">
+            <h2>Premium locked</h2>
+            <p>
+                Upgrade with a one-off payment to unlock premium collection tools.
+            </p>
+
+            <ul class="premium-list">
+                <li>Extra collection statistics</li>
+                <li>Premium badge and navbar state</li>
+                <li>Future accent colour customisation</li>
+            </ul>
+
+            <a class="button" href="#">Unlock Premium - £4.99</a>
+        </section>
+    {% endif %}
+</section>
+{% endblock %}
