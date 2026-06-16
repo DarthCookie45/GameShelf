@@ -86,7 +86,11 @@
                                         <span class="no-thumb">No image</span>
                                     {% endif %}
                                 </td>
-                                <td>{{ game.title }}</td>
+                                <td>
+                                    <a class="table-title-link" href="{% url 'game_detail' game.pk %}">
+                                        {{ game.title }}
+                                    </a>
+                                </td>
                                 <td>{{ game.get_game_type_display }}</td>
                                 <td>{{ game.platform }}</td>
                                 <td>{{ game.get_ownership_status_display }}</td>

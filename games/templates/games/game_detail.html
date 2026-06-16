@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ game.title }} | GameShelf{% endblock %}
+
+{% block content %}
+<section class="detail-layout">
+    <section class="game-detail-main panel">
+        <div class="form-heading">
+            <div>
+                <p class="eyebrow">Game Details</p>
+                <h1>{{ game.title }}</h1>
+            </div>
+
+            <a class="button button-secondary" href="{% url 'games_list' %}">
+                Back to Games
+            </a>
+        </div>
+
+        <div class="game-detail-grid">
+            <div>
+                {% if game.image %}
+                    <img class="detail-image" src="{{ game.image.url }}" alt="{{ game.title }}">
+                {% else %}
+                    <div class="detail-image-placeholder">No image</div>
+                {% endif %}
+            </div>
+
+            <dl class="game-detail-list">
+                <div>
+                    <dt>Type</dt>
+                    <dd>{{ game.get_game_type_display }}</dd>
+                </div>
+
+                <div>
+                    <dt>Platform</dt>
+                    <dd>{{ game.platform }}</dd>
+                </div>
+
+                <div>
+                    <dt>Ownership</dt>
+                    <dd>{{ game.get_ownership_status_display }}</dd>
+                </div>
+
+                <div>
+                    <dt>Format</dt>
+                    <dd>{{ game.get_format_display }}</dd>
+                </div>
+
+                <div>
+                    <dt>Genre</dt>
+                    <dd>{{ game.genre|default:'Not added' }}</dd>
+                </div>
+
+                <div>
+                    <dt>Player Count</dt>
+                    <dd>{{ game.player_count|default:'Not added' }}</dd>
+                </div>
+
+                <div>
+                    <dt>Purchase Date</dt>
+                    <dd>{{ game.purchase_date|default:'Not added' }}</dd>
+                </div>
+
+                <div>
+                    <dt>Favourite</dt>
+                    <dd>{% if game.favourite %}Yes{% else %}No{% endif %}</dd>
+                </div>
+            </dl>
+        </div>
+
+        {% if game.notes %}
+            <div class="game-notes">
+                <h2>Notes</h2>
+                <p>{{ game.notes|linebreaks }}</p>
+            </div>
+        {% endif %}
+
+        <div class="detail-actions">
+            <a class="button" href="{% url 'play_session_create' game.pk %}">Add Session</a>
+            <a class="button button-secondary" href="{% url 'game_update' game.pk %}">Edit Game</a>
+            <a class="button danger-button" href="{% url 'game_delete' game.pk %}">Delete Game</a>
+        </div>
+    </section>
+
+    <aside class="session-history panel">
+        <h2>Play Session History</h2>
+
+        {% if play_sessions %}
+            <div class="session-list">
+                {% for session in play_sessions %}
+                    <article class="session-card">
+                        <h3>{{ session.date_played }}</h3>
+                        <p><strong>Players:</strong> {{ session.players }}</p>
+
+                        {% if session.winner %}
+                            <p><strong>Winner:</strong> {{ session.winner }}</p>
+                        {% endif %}
+
+                        {% if session.result_summary %}
+                            <p><strong>Result:</strong> {{ session.result_summary }}</p>
+                        {% endif %}
+
+                        {% if session.notes %}
+                            <p>{{ session.notes }}</p>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h3>No sessions yet</h3>
+                <p>Add your first play session for this game.</p>
+            </div>
+        {% endif %}
+    </aside>
+</section>
+{% endblock %}

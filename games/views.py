@@ -105,6 +105,19 @@ def game_create(request):
 
 
 @login_required
+def game_detail(request, pk):
+    game = get_object_or_404(Game, pk=pk, owner=request.user)
+    play_sessions = game.play_sessions.all()
+
+    context = {
+        'game': game,
+        'play_sessions': play_sessions,
+    }
+
+    return render(request, 'games/game_detail.html', context)
+
+
+@login_required
 def game_update(request, pk):
     game = get_object_or_404(Game, pk=pk, owner=request.user)
 

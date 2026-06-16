@@ -581,6 +581,93 @@ body {
     background: var(--accent);
 }
 
+/*-- Game Detail --*/
+
+.detail-layout {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr 380px;
+}
+
+.game-detail-main,
+.session-history {
+    min-height: 520px;
+}
+
+.game-detail-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 260px 1fr;
+}
+
+.detail-image,
+.detail-image-placeholder {
+    border: 2px solid var(--coal);
+    border-radius: 10px;
+    height: 260px;
+    object-fit: cover;
+    width: 260px;
+}
+
+.detail-image-placeholder {
+    align-content: center;
+    color: #666666;
+    display: grid;
+    text-align: center;
+}
+
+.game-detail-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+}
+
+.game-detail-list div {
+    border-bottom: 1px solid #dddddd;
+    display: grid;
+    gap: 4px;
+    padding-bottom: 10px;
+}
+
+.game-detail-list dt {
+    font-weight: bold;
+}
+
+.game-detail-list dd {
+    margin: 0;
+}
+
+.game-notes {
+    margin-top: 24px;
+}
+
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.session-list {
+    display: grid;
+    gap: 14px;
+}
+
+.session-card {
+    border: 2px solid var(--coal);
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.session-card h3 {
+    margin-top: 0;
+}
+
+.table-title-link {
+    color: var(--coal);
+    font-weight: bold;
+}
+
 /*-- Responsive Styles --*/
 
 @media (max-width: 900px) {
@@ -594,6 +681,11 @@ body {
 
     .profile-layout,
     .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-layout,
+    .game-detail-grid {
         grid-template-columns: 1fr;
     }
 }

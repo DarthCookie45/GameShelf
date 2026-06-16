@@ -81,3 +81,8 @@ This file records manual testing completed throughout development.
 | T074 | Play session game relationship | Created a play session from a game row. | Play session is attached to the selected game. | Pass | The game field is set in the view and not exposed to the user. |
 | T075 | Play session validation | Submitted the play session form with missing/invalid player details. | Form displays validation errors. | Pass | Confirms `PlaySessionForm` validation works. |
 | T076 | Profile play session count update | Added a play session and viewed profile. | Play session statistic increases. | Pass | Confirms profile stats use related play session data. |
+| T077 | Game detail route | Clicked a game title from the games table. | Game detail page opens. | Pass | Confirms detail route and clickable title are connected. |
+| T078 | Game detail information | Viewed a saved game's detail page. | Game information and image display correctly. | Pass | Confirms detail template displays saved model fields. |
+| T079 | Play session history | Viewed detail page for a game with a play session. | Play session appears in the history panel. | Pass | Confirms related play sessions display under the correct game. |
+| T080 | Empty play session history | Viewed detail page for a game with no play sessions. | Empty session message displays. | Pass | Confirms detail page handles games without sessions. |
+| T081 | Detail page action links | Used Add Session, Edit Game, Delete Game and Back to Games buttons from detail page. | Each link opens the correct page. | Pass | Confirms detail page navigation works. |
