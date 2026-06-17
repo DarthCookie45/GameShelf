@@ -81,11 +81,12 @@
                 </div>
             </div>
 
-            <aside class="form-side panel">
-                <label class="favourite-toggle">
+            <aside class="form-side panel" aria-label="Game image and favourite options">
+                <div class="favourite-toggle">
                     {{ form.favourite }}
-                    <span>Mark as favourite</span>
-                </label>
+                    <label for="{{ form.favourite.id_for_label }}">Mark as favourite</label>
+                    {{ form.favourite.errors }}
+                </div>
 
                 <div>
                     {{ form.image.label_tag }}
