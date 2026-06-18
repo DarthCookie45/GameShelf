@@ -1,0 +1,36 @@
+{% if widget.is_initial %}
+    <div class="current-image-meta">
+        <p class="current-image-label">Current image</p>
+        <a href="{{ widget.value.url }}" target="_blank" rel="noopener">
+            View uploaded image
+        </a>
+
+        {% if not widget.required %}
+            <input
+                class="image-clear-checkbox"
+                type="checkbox"
+                name="{{ widget.checkbox_name }}"
+                id="{{ widget.checkbox_id }}"
+            >
+            <label class="button image-remove-button" for="{{ widget.checkbox_id }}">
+                Remove image
+            </label>
+        {% endif %}
+    </div>
+{% endif %}
+
+<div class="image-change-control">
+    <label class="field-help" for="{{ widget.attrs.id }}">
+        {% if widget.is_initial %}
+            Upload a replacement image
+        {% else %}
+            Upload an image
+        {% endif %}
+    </label>
+
+    <input
+        type="{{ widget.type }}"
+        name="{{ widget.name }}"
+        {% include "django/forms/widgets/attrs.html" %}
+    >
+</div>

@@ -2,6 +2,9 @@ from django import forms
 
 from .models import Game, PlaySession
 
+class GameImageWidget(forms.ClearableFileInput):
+    template_name = 'widgets/game_image_widget.html'
+
 
 class GameForm(forms.ModelForm):
     class Meta:
@@ -22,6 +25,7 @@ class GameForm(forms.ModelForm):
         widgets = {
             'purchase_date': forms.DateInput(attrs={'type': 'date'}),
             'notes': forms.Textarea(attrs={'rows': 4}),
+            'image': GameImageWidget(),
         }
 
     def clean_title(self):

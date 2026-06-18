@@ -514,6 +514,12 @@ body {
     grid-template-columns: 1fr 320px;
 }
 
+.form-grid,
+.form-main,
+.form-side {
+    min-width: 0;
+}
+
 .form-main,
 .form-side {
     display: grid;
@@ -538,37 +544,10 @@ body {
     width: 100%;
 }
 
-.favourite-toggle {
-    align-items: center;
-    display: flex;
-    font-weight: bold;
-    gap: 10px;
-}
-
-.favourite-toggle label {
-    margin: 0;
-}
-
-.favourite-toggle input {
-    width: auto;
-}
-
-.image-placeholder {
-    align-content: center;
-    border: 2px dashed var(--coal);
-    border-radius: 10px;
+.field-help {
     color: var(--muted);
-    display: grid;
-    min-height: 190px;
-    padding: 18px;
-    text-align: center;
-}
-
-.image-preview {
-    border-radius: 8px;
-    max-height: 190px;
-    max-width: 100%;
-    object-fit: cover;
+    font-size: 0.9rem;
+    margin: 0;
 }
 
 .save-button {
@@ -631,10 +610,168 @@ body {
     background: #777777;
 }
 
-.field-help {
-    color: var(--muted);
-    font-size: 0.9rem;
+/*-- Favourite And Image Side Panel --*/
+
+.form-side {
+    align-content: start;
+    display: grid;
+    gap: 16px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.side-card {
+    border: 2px solid var(--coal);
+    border-radius: 12px;
+    display: grid;
+    gap: 14px;
+    min-width: 0;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.favourite-card {
+    background: var(--accent-soft);
+}
+
+.favourite-toggle-star {
+    align-items: center;
+    display: flex;
+    min-width: 0;
+}
+
+.favourite-toggle-star input[type="checkbox"] {
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.favourite-toggle-star label {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
     margin: 0;
+    min-width: 0;
+}
+
+.favourite-star-icon {
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1;
+    text-shadow:
+        -1px -1px 0 var(--coal),
+        1px -1px 0 var(--coal),
+        -1px 1px 0 var(--coal),
+        1px 1px 0 var(--coal);
+}
+
+.favourite-toggle-star input[type="checkbox"]:checked + label .favourite-star-icon {
+    color: var(--premium);
+}
+
+.favourite-text {
+    font-weight: bold;
+}
+
+.favourite-text-on {
+    display: none;
+}
+
+.favourite-toggle-star input[type="checkbox"]:checked + label .favourite-text-off {
+    display: none;
+}
+
+.favourite-toggle-star input[type="checkbox"]:checked + label .favourite-text-on {
+    display: inline;
+}
+
+.image-upload-card h2 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.image-upload-card .field-help {
+    line-height: 1.35;
+    margin: 0;
+}
+
+.current-image-meta,
+.image-change-control {
+    display: grid;
+    gap: 10px;
+}
+
+.current-image-label {
+    font-weight: bold;
+    margin: 0;
+}
+
+.current-image-meta a {
+    color: var(--coal);
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.image-clear-checkbox {
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.image-remove-button {
+    background: #f4a6a6;
+    cursor: pointer;
+    justify-self: start;
+    padding: 7px 16px;
+}
+
+.image-clear-checkbox:checked + .image-remove-button {
+    background: var(--premium);
+}
+
+.image-clear-checkbox:checked + .image-remove-button::after {
+    content: " selected";
+}
+
+.file-input-wrap {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.file-input-wrap input[type="file"] {
+    border: 0;
+    font-size: 0.9rem;
+    max-width: 100%;
+    padding: 0;
+}
+
+.file-input-wrap input[type="checkbox"] {
+    width: auto;
+}
+
+.image-placeholder {
+    align-content: center;
+    border: 2px dashed var(--coal);
+    border-radius: 10px;
+    color: var(--muted);
+    display: grid;
+    margin-top: 4px;
+    min-height: 190px;
+    padding: 18px;
+    text-align: center;
+}
+
+.image-preview {
+    border-radius: 8px;
+    justify-self: center;
+    max-height: 190px;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 /*-- Edit/Delete Game Actions --*/

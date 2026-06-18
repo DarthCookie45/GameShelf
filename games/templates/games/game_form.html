@@ -105,25 +105,39 @@
             </div>
 
             <aside class="form-side panel" aria-label="Game image and favourite options">
-                <div class="favourite-toggle">
-                    {{ form.favourite }}
-                    <label for="{{ form.favourite.id_for_label }}">Mark as favourite</label>
+                <section class="side-card favourite-card">
+                    <div class="favourite-toggle-star">
+                        {{ form.favourite }}
+                        <label for="{{ form.favourite.id_for_label }}">
+                            <span class="favourite-star-icon" aria-hidden="true">★</span>
+                            <span class="favourite-text favourite-text-off">
+                                Not marked as a favourite game
+                            </span>
+                            <span class="favourite-text favourite-text-on">
+                                Marked as a favourite game
+                            </span>
+                        </label>
+                    </div>
                     {{ form.favourite.errors }}
-                </div>
+                </section>
 
-                <div>
-                    {{ form.image.label_tag }}
-                    {{ form.image }}
-                    {{ form.image.errors }}
-                </div>
+                <section class="side-card image-upload-card">
+                    <h2>Game Image</h2>
+                    <p class="field-help">Upload a cover, box art or screenshot.</p>
 
-                <div class="image-placeholder">
-                    {% if form.instance.image %}
-                        <img class="image-preview" src="{{ form.instance.image.url }}" alt="{{ form.instance.title }}">
-                    {% else %}
-                        Image upload preview area
-                    {% endif %}
-                </div>
+                    <div class="file-input-wrap">
+                        {{ form.image }}
+                        {{ form.image.errors }}
+                    </div>
+
+                    <div class="image-placeholder">
+                        {% if form.instance.image %}
+                            <img class="image-preview" src="{{ form.instance.image.url }}" alt="{{ form.instance.title }}">
+                        {% else %}
+                            <span>No image selected</span>
+                        {% endif %}
+                    </div>
+                </section>
             </aside>
         </div>
 
