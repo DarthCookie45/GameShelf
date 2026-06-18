@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from checkout.utils import user_has_premium
 
 from games.models import Game, PlaySession
+from .forms import CustomUserCreationForm
 
 # Create your views here.
 # Register view
@@ -14,7 +14,7 @@ def register(request):
         return redirect('home')
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
             user = form.save()
@@ -22,7 +22,7 @@ def register(request):
             messages.success(request, 'Account created successfully.')
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
 
     return render(request, 'registration/register.html', {'form': form})
 

@@ -257,6 +257,36 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    margin: 0 0 16px;
+}
+
+.auth-panel form label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.auth-panel form input {
+    margin-bottom: 6px;
+}
+
+.auth-panel .errorlist {
+    color: #9f1239;
+    font-weight: bold;
+    margin: 8px 0 14px;
+    padding-left: 22px;
+}
+
+.auth-panel .errorlist li {
+    margin-bottom: 4px;
+}
+
+.auth-panel .helptext {
+    color: var(--muted);
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    margin-top: 4px;
 }
 
 .auth-panel input {
@@ -289,6 +319,53 @@ body {
 .auth-switch a {
     color: var(--coal);
     font-weight: bold;
+}
+
+.auth-card label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.auth-card .errorlist {
+    color: #9f1239;
+    font-weight: bold;
+    margin: 8px 0 14px;
+    padding-left: 22px;
+}
+
+.auth-card .errorlist li {
+    margin-bottom: 4px;
+}
+
+.auth-card .helptext {
+    color: var(--muted);
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    margin: 6px 0 14px;
+}
+
+.auth-field {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.auth-field label {
+    font-weight: bold;
+}
+
+.auth-field input {
+    margin: 0;
+}
+
+.auth-field .helptext {
+    margin: 0;
+}
+
+.auth-field .errorlist {
+    margin: 2px 0 0;
 }
 
 
