@@ -17,6 +17,54 @@
     --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
+body.accent-matcha-mist {
+    --accent: #C2D8C4;
+    --accent-dark: #8fb996;
+    --accent-soft: #edf5ee;
+}
+
+body.accent-tyrian-purple {
+    --accent: #D7A3C4;
+    --accent-dark: #b13880;
+    --accent-soft: #f7e8f1;
+}
+
+body.accent-banana-cream {
+    --accent: #F8EDAD;
+    --accent-dark: #d6bd4a;
+    --accent-soft: #fffbea;
+}
+
+body.accent-amber-smoke {
+    --accent: #F2E0D0;
+    --accent-dark: #c79d79;
+    --accent-soft: #fff7f0;
+}
+
+body.accent-blue-mirage {
+    --accent: #6E88B0;
+    --accent-dark: #405a82;
+    --accent-soft: #eef3fb;
+}
+
+body.accent-pink-magic {
+    --accent: #F492F0;
+    --accent-dark: #c755c1;
+    --accent-soft: #fff0fe;
+}
+
+body.accent-tangerine {
+    --accent: #FF865E;
+    --accent-dark: #d95b32;
+    --accent-soft: #fff1eb;
+}
+
+body.accent-crimson-fire {
+    --accent: #D7263D;
+    --accent-dark: #9e1427;
+    --accent-soft: #fff0f2;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -1115,6 +1163,66 @@ body {
     margin-bottom: 24px;
 }
 
+.accent-form {
+    border: 2px solid var(--coal);
+    border-radius: 12px;
+    display: grid;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.accent-form h2 {
+    margin: 0 0 6px;
+}
+
+.accent-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.accent-swatch {
+    border: 2px solid var(--coal);
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 16px;
+}
+
+.accent-matcha-mist-swatch {
+    background: #C2D8C4;
+}
+
+.accent-tyrian-purple-swatch {
+    background: #D7A3C4;
+}
+
+.accent-banana-cream-swatch {
+    background: #F8EDAD;
+}
+
+.accent-amber-smoke-swatch {
+    background: #F2E0D0;
+}
+
+.accent-blue-mirage-swatch {
+    background: #6E88B0;
+    color: #ffffff;
+}
+
+.accent-pink-magic-swatch {
+    background: #F492F0;
+}
+
+.accent-tangerine-swatch {
+    background: #FF865E;
+}
+
+.accent-crimson-fire-swatch {
+    background: #D7263D;
+    color: #ffffff;
+}
 
 /*-- Premium Visual State --*/
 

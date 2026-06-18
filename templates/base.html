@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
+<body class="accent-{{ accent_colour }}">
     <header class="site-header {% if has_premium %}premium-header{% endif %}">
         <nav class="navbar">
             <a class="brand" href="{% url 'home' %}">

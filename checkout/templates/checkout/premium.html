@@ -29,11 +29,96 @@
                 </article>
 
                 <article>
-                    <h3>Future Accent Colours</h3>
-                    <p>Premium users will be able to customise the app accent colour.</p>
+                    <h3>Accent Colours</h3>
+                    <p>Premium users can customise the app accent colour.</p>
                 </article>
             </div>
         </section>
+
+        <form method="post" class="accent-form">
+            {% csrf_token %}
+
+            <div>
+                <h2>Choose Accent Colour</h2>
+                <p class="field-help">
+                    Pick the colour theme used across your GameShelf account.
+                </p>
+            </div>
+
+            <div class="accent-options">
+                <button
+                    class="accent-swatch accent-matcha-mist-swatch"
+                    name="accent_colour"
+                    value="matcha-mist"
+                    type="submit"
+                >
+                    Matcha Mist
+                </button>
+
+                <button
+                    class="accent-swatch accent-tyrian-purple-swatch"
+                    name="accent_colour"
+                    value="tyrian-purple"
+                    type="submit"
+                >
+                    Tyrian Purple
+                </button>
+
+                <button
+                    class="accent-swatch accent-banana-cream-swatch"
+                    name="accent_colour"
+                    value="banana-cream"
+                    type="submit"
+                >
+                    Banana Cream
+                </button>
+
+                <button
+                    class="accent-swatch accent-amber-smoke-swatch"
+                    name="accent_colour"
+                    value="amber-smoke"
+                    type="submit"
+                >
+                    Amber Smoke
+                </button>
+
+                <button
+                    class="accent-swatch accent-blue-mirage-swatch"
+                    name="accent_colour"
+                    value="blue-mirage"
+                    type="submit"
+                >
+                    Blue Mirage
+                </button>
+
+                <button
+                    class="accent-swatch accent-pink-magic-swatch"
+                    name="accent_colour"
+                    value="pink-magic"
+                    type="submit"
+                >
+                    Pink Magic
+                </button>
+
+                <button
+                    class="accent-swatch accent-tangerine-swatch"
+                    name="accent_colour"
+                    value="tangerine"
+                    type="submit"
+                >
+                    Tangerine
+                </button>
+
+                <button
+                    class="accent-swatch accent-crimson-fire-swatch"
+                    name="accent_colour"
+                    value="crimson-fire"
+                    type="submit"
+                >
+                    Crimson Fire
+                </button>
+            </div>
+        </form>
     {% else %}
         <section class="premium-locked">
             <h2>Premium locked</h2>
@@ -44,7 +129,7 @@
             <ul class="premium-list">
                 <li>Extra collection statistics</li>
                 <li>Premium badge and navbar state</li>
-                <li>Future accent colour customisation</li>
+                <li>Accent colour customisation</li>
             </ul>
 
             <form method="post" action="{% url 'create_checkout_session' %}">

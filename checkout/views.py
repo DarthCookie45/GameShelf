@@ -14,6 +14,30 @@ from .utils import user_has_premium
 def premium(request):
     has_premium = user_has_premium(request.user)
 
+    if request.method == 'POST' and 'accent_colour' in request.POST:
+        premium_access = getattr(request.user, 'premium_access', None)
+
+        allowed_colours = [
+            'matcha-mist',
+            'tyrian-purple',
+            'banana-cream',
+            'amber-smoke',
+            'blue-mirage',
+            'pink-magic',
+            'tangerine',
+            'crimson-fire',
+        ]
+
+        if premium_access and premium_access.paid:
+            selected_colour = request.POST.get('accent_colour')
+
+            if selected_colour in allowed_colours:
+                premium_access.accent_colour = selected_colour
+                premium_access.save()
+                messages.success(request, 'Accent colour updated.')
+
+        return redirect('premium')
+
     context = {
         'has_premium': has_premium,
     }

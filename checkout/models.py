@@ -10,6 +10,7 @@ class PremiumAccess(models.Model):
     )
     paid = models.BooleanField(default=False)
     stripe_checkout_id = models.CharField(max_length=255, blank=True)
+    accent_colour = models.CharField(max_length=20, default='matcha-mist')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
