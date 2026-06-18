@@ -60,6 +60,16 @@
                     <label for="favourite">Favourites only</label>
                 </div>
 
+                <div class="checkbox-row">
+                    <input
+                        id="hide_unavailable"
+                        type="checkbox"
+                        name="hide_unavailable"
+                        {% if selected_hide_unavailable == 'on' %}checked{% endif %}
+                    >
+                    <label for="hide_unavailable">Hide borrowed/sold</label>
+                </div>
+
                 <button class="button filter-button" type="submit">Apply filters</button>
                 <a class="clear-link" href="{% url 'games_list' %}">Clear filters</a>
             </form>

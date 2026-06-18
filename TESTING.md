@@ -114,3 +114,5 @@ This file records manual testing completed throughout development.
 | T107 | Premium mobile dropdown styling | Opened mobile navbar as a premium user. | Dropdown matches the premium navbar styling. | Pass | Premium users keep consistent visual state on mobile. |
 | T108 | Mobile table columns | Viewed games table below 800px width. | Less important columns are hidden and actions remain accessible. | Pass | Mobile table prioritises image, title, platform and actions. |
 | T109 | Template accessibility cleanup | Reviewed base, games list and game form templates. | Navigation, table headers and form side panel include clearer accessible markup. | Pass | Added hamburger label, table header scopes and form-side `aria-label`. |
+| T110 | Hide borrowed/sold filter | Ticked `Hide borrowed/sold` and applied filters. | Borrowed and sold games are hidden from the games table. | Pass | Confirms custom exclusion filter works. |
+| T111 | Clear hide unavailable filter | Clicked `Clear filters` after hiding borrowed/sold games. | Full games list displays again. | Pass | Confirms filter state can be reset. |

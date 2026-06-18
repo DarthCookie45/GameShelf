@@ -23,6 +23,7 @@ def games_list(request):
     ownership_status = request.GET.get('ownership_status', '')
     game_format = request.GET.get('format', '')
     favourite = request.GET.get('favourite', '')
+    hide_unavailable = request.GET.get('hide_unavailable', '')
     sort = request.GET.get('sort', 'title')
 
     if search_query:
@@ -43,6 +44,9 @@ def games_list(request):
 
     if favourite == 'on':
         games = games.filter(favourite=True)
+
+    if hide_unavailable == 'on':
+        games = games.exclude(ownership_status__in=[Game.BORROWED, Game.SOLD])
 
     allowed_sorts = [
         'title',
@@ -71,6 +75,7 @@ def games_list(request):
         'selected_ownership_status': ownership_status,
         'selected_format': game_format,
         'selected_favourite': favourite,
+        'selected_hide_unavailable': hide_unavailable,
         'current_sort': sort,
         'game_type_choices': Game.GAME_TYPE_CHOICES,
         'ownership_choices': Game.OWNERSHIP_CHOICES,
