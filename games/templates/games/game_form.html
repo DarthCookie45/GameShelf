@@ -40,6 +40,29 @@
 
                 <div>
                     {{ form.platform.label_tag }}
+
+                    <div class="platform-badge-picker" aria-label="Common platform options">
+                        <button type="button" class="platform-badge platform-playstation" data-platform="PS1">PS1</button>
+                        <button type="button" class="platform-badge platform-playstation" data-platform="PS2">PS2</button>
+                        <button type="button" class="platform-badge platform-playstation" data-platform="PS3">PS3</button>
+                        <button type="button" class="platform-badge platform-playstation" data-platform="PS4">PS4</button>
+                        <button type="button" class="platform-badge platform-playstation" data-platform="PS5">PS5</button>
+
+                        <button type="button" class="platform-badge platform-xbox" data-platform="Xbox">Xbox</button>
+                        <button type="button" class="platform-badge platform-xbox" data-platform="Xbox 360">Xbox 360</button>
+                        <button type="button" class="platform-badge platform-xbox" data-platform="Xbox One">Xbox One</button>
+                        <button type="button" class="platform-badge platform-xbox" data-platform="Xbox Series X|S">Xbox Series X|S</button>
+
+                        <button type="button" class="platform-badge platform-pc" data-platform="PC">PC</button>
+
+                        <button type="button" class="platform-badge platform-nintendo" data-platform="Nintendo Switch">Switch</button>
+                        <button type="button" class="platform-badge platform-nintendo" data-platform="Nintendo DS">DS</button>
+                        <button type="button" class="platform-badge platform-nintendo" data-platform="Nintendo 3DS">3DS</button>
+
+                        <button type="button" class="platform-badge platform-neutral" data-platform="N/A">N/A</button>
+                    </div>
+
+                    <p class="field-help">Select one or more badges, or type a custom platform manually.</p>
                     {{ form.platform }}
                     {{ form.platform.errors }}
                 </div>

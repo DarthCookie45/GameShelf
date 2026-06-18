@@ -116,3 +116,7 @@ This file records manual testing completed throughout development.
 | T109 | Template accessibility cleanup | Reviewed base, games list and game form templates. | Navigation, table headers and form side panel include clearer accessible markup. | Pass | Added hamburger label, table header scopes and form-side `aria-label`. |
 | T110 | Hide borrowed/sold filter | Ticked `Hide borrowed/sold` and applied filters. | Borrowed and sold games are hidden from the games table. | Pass | Confirms custom exclusion filter works. |
 | T111 | Clear hide unavailable filter | Clicked `Clear filters` after hiding borrowed/sold games. | Full games list displays again. | Pass | Confirms filter state can be reset. |
+| T112 | Multiple platform badge picker | Clicked multiple platform badges on the Add Game form. | Platform field is filled with comma-separated selected platforms. | Pass | Allows users to record games owned on more than one platform. |
+| T113 | Platform badge toggle | Clicked a selected platform badge again. | Platform is removed from the platform field and visual selection clears. | Pass | Confirms users can correct badge selections. |
+| T114 | Manual custom platform | Typed a custom platform manually into the platform field. | Custom platform saves successfully. | Pass | Supports platforms not included in the badge list. |
+| T115 | Edit existing platform badges | Opened edit page for a game with saved platforms. | Matching platform badges show as selected. | Pass | Confirms saved platform text syncs with badge UI. |

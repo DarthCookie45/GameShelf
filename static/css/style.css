@@ -576,6 +576,66 @@ body {
     justify-self: end;
 }
 
+.platform-badge-picker {
+    align-items: flex-start;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.platform-badge {
+    border: 2px solid var(--coal);
+    border-radius: 999px;
+    color: #ffffff;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: bold;
+    line-height: 1;
+    padding: 4px 8px;
+    width: auto;
+}
+
+.platform-badge:hover,
+.platform-badge.is-selected {
+    box-shadow: 0 0 0 3px var(--accent);
+    transform: translateY(-1px);
+}
+
+.form-main .platform-badge-picker {
+    display: flex;
+}
+
+.form-main .platform-badge-picker .platform-badge {
+    width: auto;
+}
+
+.platform-playstation {
+    background: #0057b8;
+}
+
+.platform-xbox {
+    background: #107c10;
+}
+
+.platform-nintendo {
+    background: #e60012;
+}
+
+.platform-pc {
+    background: #333333;
+}
+
+.platform-neutral {
+    background: #777777;
+}
+
+.field-help {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
 
 /*-- Edit/Delete Game Actions --*/
 
