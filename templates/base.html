@@ -5,7 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}GameShelf{% endblock %}</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Pixelify+Sans:wght@500;700&display=swap"
+        rel="stylesheet"
+    >
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="accent-{{ accent_colour }}">
@@ -29,23 +34,56 @@
             </button>
 
             <div class="nav-links" id="site-navigation">
-                <a href="{% url 'home' %}">HOME</a>
+                <a
+                    class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                    href="{% url 'home' %}"
+                >
+                    HOME
+                </a>
 
                 {% if user.is_authenticated %}
                     <span>|</span>
-                    <a href="{% url 'games_list' %}">GAMES</a>
+
+                    <a
+                        class="{% if request.resolver_match.url_name == 'games_list' %}active{% endif %}"
+                        href="{% url 'games_list' %}"
+                    >
+                        GAMES
+                    </a>
+
                     <span>|</span>
-                    <a href="{% url 'profile' %}">PROFILE</a>
+
+                    <a
+                        class="{% if request.resolver_match.url_name == 'profile' or request.resolver_match.url_name == 'edit_email' or request.resolver_match.url_name == 'password_change' %}active{% endif %}"
+                        href="{% url 'profile' %}"
+                    >
+                        PROFILE
+                    </a>
+
                     <span>|</span>
-                    <a class="premium-link" href="{% url 'premium' %}">PREMIUM</a>
+
+                    <a
+                        class="premium-link {% if request.resolver_match.url_name == 'premium' %}active{% endif %}"
+                        href="{% url 'premium' %}"
+                    >
+                        PREMIUM
+                    </a>
+
                     <span>|</span>
+
                     <form class="logout-form" action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
                         <button type="submit">LOGOUT</button>
                     </form>
                 {% else %}
                     <span>|</span>
-                    <a href="{% url 'login' %}">LOGIN / REGISTER</a>
+
+                    <a
+                        class="{% if request.resolver_match.url_name == 'login' or request.resolver_match.url_name == 'register' %}active{% endif %}"
+                        href="{% url 'login' %}"
+                    >
+                        LOGIN / REGISTER
+                    </a>
                 {% endif %}
             </div>
         </nav>

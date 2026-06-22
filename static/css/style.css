@@ -15,6 +15,8 @@
     --error: #ffd6d6;
     --danger: #ffb8b8;
     --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    --font-heading: 'Pixelify Sans', Arial, sans-serif;
+    --font-body: 'Atkinson Hyperlegible', Arial, sans-serif;
 }
 
 body.accent-matcha-mist {
@@ -60,8 +62,8 @@ body.accent-tangerine {
 }
 
 body.accent-crimson-fire {
-    --accent: #D7263D;
-    --accent-dark: #9e1427;
+    --accent: #b36a74;
+    --accent-dark: #883943;
     --accent-soft: #fff0f2;
 }
 
@@ -76,10 +78,22 @@ body {
 }
 
 body {
-    background: var(--page);
+    background:
+        
+        url("../images/gameshelf-background.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
     color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-body);
     margin: 0;
+}
+
+h1,
+h2,
+h3,
+.brand {
+    font-family: var(--font-heading);
 }
 
 
@@ -116,9 +130,11 @@ body {
 
 .brand {
     color: #ffffff;
-    font-size: 1rem;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
     font-weight: bold;
     letter-spacing: 0.04em;
+    line-height: 1;
     text-decoration: none;
 }
 
@@ -143,9 +159,14 @@ body {
     color: var(--accent);
 }
 
-.nav-links .active {
+.nav-links a {
+    border-bottom: 3px solid transparent;
+    padding-bottom: 4px;
+}
+
+.nav-links a.active {
+    border-bottom-color: var(--accent);
     color: var(--accent);
-    font-weight: bold;
 }
 
 .premium-link {
@@ -153,13 +174,21 @@ body {
     font-weight: bold;
 }
 
+.premium-link.active {
+    border-bottom-color: var(--premium);
+}
+
 .logout-form {
+    align-items: center;
+    display: flex;
     margin: 0;
 }
 
 .logout-form button {
+    border-bottom: 3px solid transparent;
     cursor: pointer;
-    padding: 0;
+    line-height: 1;
+    padding: 0 0 4px;
 }
 
 .page-shell {
@@ -167,7 +196,8 @@ body {
 }
 
 .panel {
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(3px);
     border: 2px solid var(--border);
     border-radius: 14px;
     box-shadow: var(--shadow);
@@ -224,7 +254,6 @@ body {
 
 .home-hero {
     align-items: center;
-    background: var(--surface);
     display: grid;
     min-height: 390px;
     overflow: hidden;
@@ -661,7 +690,7 @@ body {
 .form-main select,
 .form-main textarea,
 .form-side input {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.75);
     border: 2px solid var(--coal);
     border-radius: 9px;
     font: inherit;
@@ -1275,7 +1304,6 @@ body {
 
 .accent-blue-mirage-swatch {
     background: #6E88B0;
-    color: #ffffff;
 }
 
 .accent-pink-magic-swatch {
@@ -1287,8 +1315,7 @@ body {
 }
 
 .accent-crimson-fire-swatch {
-    background: #D7263D;
-    color: #ffffff;
+    background: #b36a74;
 }
 
 /*-- Premium Visual State --*/
@@ -1309,6 +1336,32 @@ body {
     vertical-align: middle;
 }
 
+/*-- Game Form Glass Fix --*/
+
+.game-form-shell.panel {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.game-form .form-main.panel,
+.game-form .form-side.panel {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(3px);
+}
+
+.game-form .side-card {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(3px);
+}
+
+.game-form .favourite-card {
+    background: rgba(237, 245, 238, 0.35);
+}
+
+.game-form input,
+.game-form select,
+.game-form textarea {
+    background: rgba(255, 255, 255, 0.5);
+}
 
 /*-- Responsive Styles --*/
 
