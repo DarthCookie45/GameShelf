@@ -31,17 +31,46 @@ def register(request):
 @login_required
 def profile(request):
     user_games = Game.objects.filter(owner=request.user)
+    user_sessions = PlaySession.objects.filter(game__owner=request.user).select_related('game')
 
     total_games = user_games.count()
     favourite_games = user_games.filter(favourite=True).count()
     platforms = user_games.values_list('platform', flat=True).distinct()
     platform_count = platforms.count()
-    total_play_sessions = PlaySession.objects.filter(game__owner=request.user).count()
+    total_play_sessions = user_sessions.count()
+    has_premium = user_has_premium(request.user)
 
     game_type_stats = {}
 
     for value, label in Game.GAME_TYPE_CHOICES:
         game_type_stats[label] = user_games.filter(game_type=value).count()
+
+    format_stats = {}
+
+    for value, label in Game.FORMAT_CHOICES:
+        format_stats[label] = user_games.filter(format=value).count()
+
+    ownership_stats = {}
+
+    for value, label in Game.OWNERSHIP_CHOICES:
+        ownership_stats[label] = user_games.filter(ownership_status=value).count()
+
+    favourite_percentage = 0
+
+    if total_games > 0:
+        favourite_percentage = round((favourite_games / total_games) * 100)
+
+    recent_sessions = user_sessions.order_by('-date_played', '-created_at')[:5]
+
+    most_played_game = None
+    most_played_count = 0
+
+    for game in user_games:
+        session_count = user_sessions.filter(game=game).count()
+
+        if session_count > most_played_count:
+            most_played_game = game
+            most_played_count = session_count
 
     context = {
         'total_games': total_games,
@@ -49,7 +78,14 @@ def profile(request):
         'platform_count': platform_count,
         'total_play_sessions': total_play_sessions,
         'game_type_stats': game_type_stats,
-        'account_tier': 'Premium' if user_has_premium(request.user) else 'Free',
+        'format_stats': format_stats,
+        'ownership_stats': ownership_stats,
+        'favourite_percentage': favourite_percentage,
+        'recent_sessions': recent_sessions,
+        'most_played_game': most_played_game,
+        'most_played_count': most_played_count,
+        'has_premium': has_premium,
+        'account_tier': 'Premium' if has_premium else 'Free',
     }
 
     return render(request, 'accounts/profile.html', context)

@@ -72,4 +72,98 @@
         </ul>
     </section>
 </section>
+
+{% if has_premium %}
+    <section class="premium-profile-panel panel">
+        <div class="premium-profile-heading">
+            <div>
+                <p class="eyebrow">Premium Insights</p>
+                <h2>Extra Shelf Stats</h2>
+            </div>
+
+            <span class="premium-badge">PREMIUM</span>
+        </div>
+
+        <div class="premium-stats-grid">
+            <article>
+                <span>{{ favourite_percentage }}%</span>
+                <p>Favourite rate</p>
+            </article>
+
+            <article>
+                {% if most_played_game %}
+                    <span>{{ most_played_count }}</span>
+                    <p>Sessions with {{ most_played_game.title }}</p>
+                {% else %}
+                    <span>0</span>
+                    <p>No play sessions yet</p>
+                {% endif %}
+            </article>
+        </div>
+
+        <div class="premium-breakdown-grid">
+            <section>
+                <h3>Format Breakdown</h3>
+
+                <ul class="type-stats">
+                    {% for label, count in format_stats.items %}
+                        <li>
+                            <span>{{ label }}</span>
+                            <strong>{{ count }}</strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section>
+                <h3>Ownership Breakdown</h3>
+
+                <ul class="type-stats">
+                    {% for label, count in ownership_stats.items %}
+                        <li>
+                            <span>{{ label }}</span>
+                            <strong>{{ count }}</strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+
+        <section class="recent-session-panel">
+            <h3>Recent Play Sessions</h3>
+
+            {% if recent_sessions %}
+                <div class="recent-session-list">
+                    {% for session in recent_sessions %}
+                        <article class="recent-session-item">
+                            <strong>{{ session.game.title }}</strong>
+                            <span>{{ session.date_played }}</span>
+
+                            {% if session.winner %}
+                                <p>Winner: {{ session.winner }}</p>
+                            {% endif %}
+
+                            {% if session.result_summary %}
+                                <p>{{ session.result_summary }}</p>
+                            {% endif %}
+                        </article>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No play sessions logged yet.</p>
+            {% endif %}
+        </section>
+    </section>
+{% else %}
+    <section class="premium-profile-panel premium-teaser panel">
+        <p class="eyebrow">Premium Insights</p>
+        <h2>Unlock Extra Shelf Stats</h2>
+        <p>
+            Premium users can view format breakdowns, ownership insights,
+            favourite percentage and recent play session history.
+        </p>
+
+        <a class="button" href="{% url 'premium' %}">Unlock Premium</a>
+    </section>
+{% endif %}
 {% endblock %}

@@ -1035,6 +1035,73 @@ body {
     padding: 10px 0;
 }
 
+.premium-profile-panel {
+    display: grid;
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.premium-profile-heading {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.premium-profile-heading h2 {
+    margin: 0;
+}
+
+.premium-stats-grid,
+.premium-breakdown-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.premium-stats-grid article {
+    background: var(--accent);
+    border: 2px solid var(--coal);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.premium-stats-grid span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.premium-stats-grid p {
+    margin-bottom: 0;
+}
+
+.recent-session-list {
+    display: grid;
+    gap: 12px;
+}
+
+.recent-session-item {
+    background: var(--accent-soft);
+    border: 2px solid var(--coal);
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.recent-session-item span {
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+}
+
+.recent-session-item p {
+    margin-bottom: 0;
+}
+
+.premium-teaser {
+    background: var(--accent-soft);
+}
 
 /*-- Game Detail Page --*/
 
@@ -1413,5 +1480,10 @@ body {
     .game-thumb {
         height: 48px;
         width: 48px;
+    }
+
+    .premium-stats-grid,
+    .premium-breakdown-grid {
+        grid-template-columns: 1fr;
     }
 }
