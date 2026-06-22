@@ -20,3 +20,17 @@ class CustomUserCreationForm(UserCreationForm):
             raise forms.ValidationError('An account already exists with this email address.')
 
         return email
+
+
+class EmailUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email']
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if email and User.objects.filter(email__iexact=email).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError('An account already exists with this email address.')
+
+        return email

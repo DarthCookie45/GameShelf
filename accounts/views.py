@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from checkout.utils import user_has_premium
 
 from games.models import Game, PlaySession
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, EmailUpdateForm
 
 # Create your views here.
 # Register view
@@ -64,3 +64,19 @@ def logout_user(request):
         return redirect('home')
 
     return redirect('home')
+
+
+#Update email view
+@login_required
+def edit_email(request):
+    if request.method == 'POST':
+        form = EmailUpdateForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Email address updated.')
+            return redirect('profile')
+    else:
+        form = EmailUpdateForm(instance=request.user)
+
+    return render(request, 'accounts/edit_email.html', {'form': form})
