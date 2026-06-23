@@ -159,3 +159,5 @@ This file records manual testing completed throughout development.
 | T152 | Notes textarea resize | Tried resizing the Notes field on add/edit game forms. | Notes field can resize vertically but cannot break the page layout sideways. | Pass | Prevents form layout from becoming unusable. |
 | T153 | Game form placeholders | Viewed add game form with empty fields. | Placeholder text appears in relevant input fields. | Pass | Helps users understand what information to enter. |
 | T154 | Transparent auth panels | Viewed login, register, edit email and change password pages. | Supporting info panels match the transparent glass style. | Pass | Keeps visual design consistent across account pages. |
+| T155 | Platform badge selected state | Selected and deselected platform badges on the game form. | Selected badges display a clear accent-coloured ring. | Pass | Improves visual feedback for multi-platform selection. |
+| T156 | Favourite card accent styling | Viewed the favourite section on the game form. | Favourite card displays an accent-tinted background. | Pass | Restores visual consistency with the selected accent colour. |

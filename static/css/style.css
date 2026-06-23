@@ -737,7 +737,9 @@ h3,
 
 .platform-badge:hover,
 .platform-badge.is-selected {
-    box-shadow: 0 0 0 3px var(--accent);
+    box-shadow:
+        0 0 0 3px var(--accent-dark),
+        0 6px 14px rgba(0, 0, 0, 0.25);
     transform: translateY(-1px);
 }
 
@@ -783,7 +785,7 @@ h3,
 }
 
 .favourite-card {
-    background: rgba(237, 245, 238, 0.35);
+    background: var(--accent);
 }
 
 .favourite-toggle-star {
@@ -820,7 +822,7 @@ h3,
 }
 
 .favourite-toggle-star input[type="checkbox"]:checked + label .favourite-star-icon {
-    color: var(--premium);
+    color: rgb(255, 228, 0);
 }
 
 .favourite-text {
@@ -935,6 +937,10 @@ h3,
 .game-form .side-card {
     background: rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(3px);
+}
+
+.game-form .side-card.favourite-card {
+    background: var(--accent);
 }
 
 .game-form input,
