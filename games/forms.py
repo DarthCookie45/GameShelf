@@ -43,6 +43,30 @@ class GameForm(forms.ModelForm):
             raise forms.ValidationError('Please enter a platform or game format.')
 
         return platform
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['title'].widget.attrs.update({
+            'placeholder': 'e.g. UNO, Pokemon, God of War'
+        })
+
+        self.fields['platform'].widget.attrs.update({
+            'placeholder': 'e.g. PS5, PC, Nintendo Switch'
+        })
+
+        self.fields['genre'].widget.attrs.update({
+            'placeholder': 'e.g. RPG, strategy, party game'
+        })
+
+        self.fields['player_count'].widget.attrs.update({
+            'placeholder': 'e.g. 1-4 players'
+        })
+
+        self.fields['notes'].widget.attrs.update({
+            'placeholder': 'Add condition, edition, DLC, house rules or extra notes here.',
+            'rows': 5
+        })
 
 
 class PlaySessionForm(forms.ModelForm):

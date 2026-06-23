@@ -78,9 +78,7 @@ body {
 }
 
 body {
-    background:
-        
-        url("../images/gameshelf-background.png");
+    background: url("../images/gameshelf-background.png");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -154,14 +152,14 @@ h3,
     text-decoration: none;
 }
 
-.nav-links a:hover,
-.logout-form button:hover {
-    color: var(--accent);
-}
-
 .nav-links a {
     border-bottom: 3px solid transparent;
     padding-bottom: 4px;
+}
+
+.nav-links a:hover,
+.logout-form button:hover {
+    color: var(--accent);
 }
 
 .nav-links a.active {
@@ -321,7 +319,8 @@ h3,
 
 .auth-info {
     align-content: center;
-    background: linear-gradient(135deg, var(--accent-soft), #ffffff);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(3px);
     display: grid;
 }
 
@@ -347,18 +346,21 @@ h3,
     margin-bottom: 6px;
 }
 
-.auth-panel .errorlist {
+.auth-panel .errorlist,
+.auth-card .errorlist {
     color: #9f1239;
     font-weight: bold;
     margin: 8px 0 14px;
     padding-left: 22px;
 }
 
-.auth-panel .errorlist li {
+.auth-panel .errorlist li,
+.auth-card .errorlist li {
     margin-bottom: 4px;
 }
 
-.auth-panel .helptext {
+.auth-panel .helptext,
+.auth-card .helptext {
     color: var(--muted);
     display: block;
     font-size: 0.95rem;
@@ -380,7 +382,7 @@ h3,
 .form-main select:focus,
 .form-main textarea:focus,
 .form-side input:focus {
-    outline: 3px solid rgba(194, 216, 196, 0.9);
+    outline: 3px solid var(--accent);
 }
 
 .form-button {
@@ -402,25 +404,6 @@ h3,
     display: inline-block;
     font-weight: bold;
     margin-bottom: 6px;
-}
-
-.auth-card .errorlist {
-    color: #9f1239;
-    font-weight: bold;
-    margin: 8px 0 14px;
-    padding-left: 22px;
-}
-
-.auth-card .errorlist li {
-    margin-bottom: 4px;
-}
-
-.auth-card .helptext {
-    color: var(--muted);
-    display: block;
-    font-size: 0.95rem;
-    line-height: 1.35;
-    margin: 6px 0 14px;
 }
 
 .auth-field {
@@ -516,12 +499,22 @@ h3,
 
 .filter-form input,
 .filter-form select {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.9);
     border: 2px solid var(--coal);
     border-radius: 9px;
     font: inherit;
     padding: 9px;
     width: 100%;
+}
+
+@media (min-width: 901px) {
+    .filter-details:not([open]) .filter-form {
+        display: grid;
+    }
+
+    .filter-summary {
+        display: none;
+    }
 }
 
 .checkbox-row {
@@ -562,19 +555,16 @@ h3,
 
 .table-wrap {
     max-width: 100%;
-    overflow-x: auto;
 }
 
 .games-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    min-width: 950px;
+    border-collapse: collapse;
     width: 100%;
 }
 
 .games-table th,
 .games-table td {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
     padding: 12px;
     text-align: left;
     vertical-align: middle;
@@ -597,8 +587,12 @@ h3,
     text-decoration: none;
 }
 
+.games-table td {
+    overflow-wrap: anywhere;
+}
+
 .games-table tbody tr:hover {
-    background: var(--accent-soft);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .table-title-link {
@@ -607,14 +601,18 @@ h3,
 }
 
 .table-actions {
-    white-space: nowrap;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    min-width: 0px;
+    white-space: normal;
 }
 
 .table-actions a {
     color: var(--coal);
     display: inline-block;
     font-weight: bold;
-    margin-right: 12px;
+    margin: 0;
 }
 
 .game-thumb {
@@ -698,6 +696,13 @@ h3,
     width: 100%;
 }
 
+.form-main textarea {
+    max-height: 220px;
+    max-width: 100%;
+    min-height: 110px;
+    resize: vertical;
+}
+
 .field-help {
     color: var(--muted);
     font-size: 0.9rem;
@@ -736,14 +741,6 @@ h3,
     transform: translateY(-1px);
 }
 
-.form-main .platform-badge-picker {
-    display: flex;
-}
-
-.form-main .platform-badge-picker .platform-badge {
-    width: auto;
-}
-
 .platform-playstation {
     background: #0057b8;
 }
@@ -763,6 +760,7 @@ h3,
 .platform-neutral {
     background: #777777;
 }
+
 
 /*-- Favourite And Image Side Panel --*/
 
@@ -785,7 +783,7 @@ h3,
 }
 
 .favourite-card {
-    background: var(--accent-soft);
+    background: rgba(237, 245, 238, 0.35);
 }
 
 .favourite-toggle-star {
@@ -927,6 +925,24 @@ h3,
     max-width: 100%;
     object-fit: cover;
 }
+
+.game-form-shell.panel {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.game-form .form-main.panel,
+.game-form .form-side.panel,
+.game-form .side-card {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(3px);
+}
+
+.game-form input,
+.game-form select,
+.game-form textarea {
+    background: rgba(255, 255, 255, 0.5);
+}
+
 
 /*-- Edit/Delete Game Actions --*/
 
@@ -1132,6 +1148,7 @@ h3,
     background: var(--accent-soft);
 }
 
+
 /*-- Game Detail Page --*/
 
 .detail-layout {
@@ -1318,6 +1335,7 @@ h3,
     background: #b36a74;
 }
 
+
 /*-- Premium Visual State --*/
 
 .premium-header {
@@ -1336,36 +1354,10 @@ h3,
     vertical-align: middle;
 }
 
-/*-- Game Form Glass Fix --*/
-
-.game-form-shell.panel {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.game-form .form-main.panel,
-.game-form .form-side.panel {
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(3px);
-}
-
-.game-form .side-card {
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(3px);
-}
-
-.game-form .favourite-card {
-    background: rgba(237, 245, 238, 0.35);
-}
-
-.game-form input,
-.game-form select,
-.game-form textarea {
-    background: rgba(255, 255, 255, 0.5);
-}
 
 /*-- Responsive Styles --*/
 
-@media (max-width: 1100px) {
+@media (max-width: 1150px) {
     .detail-layout {
         grid-template-columns: 1fr;
     }
@@ -1489,54 +1481,114 @@ h3,
         width: 100%;
     }
 
-    .optional-col {
+    .premium-stats-grid,
+    .premium-breakdown-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .table-actions {
+        display: grid;
+        gap: 6px;
+    }
+
+    .games-table tr {
+        padding: 12px;
+    }
+
+    .games-table td {
+        font-size: 0.9rem;
+    }
+}
+
+/*-- Games Table Responsive Cleanup --*/
+/* 1-image, 2-title, 3-type, 4-platform, 5-ownership, 6-format, 7-purchase-date, 8-favourite, 9-actions */
+@media (max-width: 1640px) {
+    .games-table th:nth-child(6),
+    .games-table td:nth-child(6) {
+        display: none;
+    }
+}
+
+@media (max-width: 1560px) {
+    .games-table th:nth-child(8),
+    .games-table td:nth-child(8) {
+        display: none;
+    }
+}
+
+@media (max-width: 1465px) {
+    .games-table th:nth-child(3),
+    .games-table td:nth-child(3) {
         display: none;
     }
 
     .games-table {
+        table-layout: fixed;
+    }
+
+    .table-actions {
+        display: grid;
+        gap: 6px;
         min-width: 0;
+    }
+}
+
+@media (max-width: 1080px) {
+    .games-table th:nth-child(5),
+    .games-table td:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 965px) {
+    .games-table th,
+    .games-table td {
+        font-size: 0.9rem;
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 565px) {
+    .games-table th:nth-child(7),
+    .games-table td:nth-child(7) {
+        display: none;
+    }
+
+    .games-table {
         table-layout: fixed;
     }
 
     .games-table th,
     .games-table td {
+        font-size: 0.9rem;
         padding: 10px 8px;
     }
 
-    .games-table th:nth-child(1),
-    .games-table td:nth-child(1) {
-        width: 64px;
+    .table-actions {
+        display: grid;
+        gap: 6px;
+        min-width: 0;
     }
+}
 
-    .games-table th:nth-child(2),
-    .games-table td:nth-child(2) {
-        width: auto;
-    }
-
+@media (max-width: 465px) {
     .games-table th:nth-child(4),
     .games-table td:nth-child(4) {
-        width: 88px;
+        display: none;
     }
 
-    .games-table th:nth-child(9),
-    .games-table td:nth-child(9) {
-        width: 105px;
+    .games-table th,
+    .games-table td {
+        font-size: 0.85rem;
+        padding: 8px 6px;
     }
+}
 
-    .table-actions a {
-        display: block;
-        font-size: 0.9rem;
-        margin-bottom: 6px;
-        margin-right: 0;
-    }
-
-    .game-thumb {
-        height: 48px;
-        width: 48px;
-    }
-
-    .premium-stats-grid,
-    .premium-breakdown-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 340px) {
+    .games-table th:nth-child(1),
+    .games-table td:nth-child(1) {
+        display: none;
     }
 }

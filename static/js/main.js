@@ -51,3 +51,18 @@ if (platformBadges.length && platformInput) {
     platformInput.addEventListener('input', syncSelectedBadges);
     syncSelectedBadges();
 }
+
+function keepFiltersOpenOnWideScreens() {
+    const filterDetails = document.querySelector('.filter-details');
+
+    if (!filterDetails) {
+        return;
+    }
+
+    if (window.innerWidth > 900) {
+        filterDetails.setAttribute('open', '');
+    }
+}
+
+window.addEventListener('load', keepFiltersOpenOnWideScreens);
+window.addEventListener('resize', keepFiltersOpenOnWideScreens);

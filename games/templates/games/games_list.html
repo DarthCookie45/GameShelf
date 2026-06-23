@@ -116,11 +116,13 @@
                                 <td class="optional-col">{{ game.get_format_display }}</td>
                                 <td class="optional-col">{{ game.purchase_date|default:'-' }}</td>
                                 <td class="optional-col">{% if game.favourite %}Yes{% else %}No{% endif %}</td>
-                                <td class="table-actions">
-                                    <a href="{% url 'game_detail' game.pk %}">View</a>
-                                    <a href="{% url 'play_session_create' game.pk %}">Add Session</a>
-                                    <a href="{% url 'game_update' game.pk %}">Edit</a>
-                                    <a href="{% url 'game_delete' game.pk %}">Delete</a>
+                                <td>
+                                    <div class="table-actions">
+                                        <a href="{% url 'game_detail' game.pk %}">View</a>
+                                        <a href="{% url 'play_session_create' game.pk %}">Add Session</a>
+                                        <a href="{% url 'game_update' game.pk %}">Edit</a>
+                                        <a href="{% url 'game_delete' game.pk %}">Delete</a>
+                                    </div>
                                 </td>
                             </tr>
                         {% endfor %}
