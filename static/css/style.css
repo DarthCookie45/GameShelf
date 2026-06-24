@@ -279,6 +279,13 @@ h3,
     background: var(--error);
 }
 
+.page-shell .message-warning {
+    background: #fff3cd;
+    border: 2px solid #d39e00;
+    color: #3d2c00;
+    font-weight: bold;
+}
+
 
 /*-- Homepage --*/
 
