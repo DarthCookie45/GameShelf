@@ -94,6 +94,18 @@ h3,
     font-family: var(--font-heading);
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 
 /*-- Shared Layout --*/
 
@@ -112,6 +124,26 @@ h3,
     min-height: 64px;
     padding: 0 34px;
     position: relative;
+}
+
+.brand-logo-link {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+}
+
+.brand-logo {
+    display: block;
+    height: 82px;
+    object-fit: contain;
+    width: auto;
+}
+
+@media screen and (max-width: 800px) {
+    .brand-logo {
+        height: 34px;
+        max-width: 190px;
+    }
 }
 
 .nav-toggle {

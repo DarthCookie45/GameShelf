@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .forms import GameForm, PlaySessionForm
 from .models import Game, PlaySession
 
+
 # Create your views here.
 def get_sort_url(current_sort, field_name):
     if current_sort == field_name:
@@ -106,7 +107,8 @@ def game_create(request):
     else:
         form = GameForm()
 
-    return render(request, 'games/game_form.html', {'form': form, 'page_title': 'Add Game'})
+    return render(request, 'games/game_form.html',
+                  {'form': form, 'page_title': 'Add Game'})
 
 
 @login_required
@@ -136,7 +138,8 @@ def game_update(request, pk):
     else:
         form = GameForm(instance=game)
 
-    return render(request, 'games/game_form.html', {'form': form, 'page_title': 'Edit Game'})
+    return render(request, 'games/game_form.html',
+                  {'form': form, 'page_title': 'Edit Game'})
 
 
 @login_required

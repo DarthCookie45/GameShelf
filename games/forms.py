@@ -2,6 +2,7 @@ from django import forms
 
 from .models import Game, PlaySession
 
+
 class GameImageWidget(forms.ClearableFileInput):
     template_name = 'widgets/game_image_widget.html'
 
@@ -40,10 +41,12 @@ class GameForm(forms.ModelForm):
         platform = self.cleaned_data['platform'].strip()
 
         if len(platform) < 2:
-            raise forms.ValidationError('Please enter a platform or game format.')
+            raise forms.ValidationError(
+                'Please enter a platform or game format.'
+            )
 
         return platform
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -64,7 +67,8 @@ class GameForm(forms.ModelForm):
         })
 
         self.fields['notes'].widget.attrs.update({
-            'placeholder': 'Add condition, edition, DLC, house rules or extra notes here.',
+            'placeholder':
+                'Add condition, edition, DLC, house rules or extra notes here',
             'rows': 5
         })
 
@@ -72,7 +76,9 @@ class GameForm(forms.ModelForm):
 class PlaySessionForm(forms.ModelForm):
     class Meta:
         model = PlaySession
-        fields = ['date_played', 'players', 'winner', 'result_summary', 'notes']
+        fields = [
+            'date_played', 'players', 'winner', 'result_summary', 'notes'
+        ]
         widgets = {
             'date_played': forms.DateInput(attrs={'type': 'date'}),
             'notes': forms.Textarea(attrs={'rows': 4}),

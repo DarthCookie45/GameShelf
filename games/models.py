@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 
+
 # Create your models here.
 class Game(models.Model):
     BOARD_GAME = 'board_game'
@@ -73,7 +74,7 @@ class Game(models.Model):
 
     def get_absolute_url(self):
         return reverse('game_detail', kwargs={'pk': self.pk})
-    
+
 
 class PlaySession(models.Model):
     game = models.ForeignKey(

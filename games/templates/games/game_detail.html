@@ -3,8 +3,8 @@
 {% block title %}{{ game.title }} | GameShelf{% endblock %}
 
 {% block content %}
-<section class="detail-layout">
-    <section class="game-detail-main panel">
+<div class="detail-layout">
+    <div class="game-detail-main panel">
         <div class="form-heading">
             <div>
                 <p class="eyebrow">Game Details</p>
@@ -80,7 +80,7 @@
             <a class="button button-secondary" href="{% url 'game_update' game.pk %}">Edit Game</a>
             <a class="button danger-button" href="{% url 'game_delete' game.pk %}">Delete Game</a>
         </div>
-    </section>
+    </div>
 
     <aside class="session-history panel">
         <h2>Play Session History</h2>
@@ -113,5 +113,5 @@
             </div>
         {% endif %}
     </aside>
-</section>
+</div>
 {% endblock %}

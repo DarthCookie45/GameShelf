@@ -3,7 +3,7 @@
 {% block title %}Games | GameShelf{% endblock %}
 
 {% block content %}
-<section class="games-layout">
+<div class="games-layout">
     <aside class="games-sidebar panel" aria-label="Game filters">
         <a class="button add-game-button" href="{% url 'game_create' %}">ADD GAME</a>
 
@@ -76,7 +76,7 @@
         </details>
     </aside>
 
-    <section class="games-table-panel panel">
+    <div class="games-table-panel panel">
         <h1>Games</h1>
 
         {% if games %}
@@ -135,6 +135,6 @@
                 <p>Add your first game or adjust your filters.</p>
             </div>
         {% endif %}
-    </section>
-</section>
+    </div>
+</div>
 {% endblock %}

@@ -3,13 +3,13 @@
 {% block title %}Profile | GameShelf{% endblock %}
 
 {% block content %}
-<section class="profile-actions">
+<nav class="profile-actions" aria-label="Profile navigation">
     <a class="button active-tab" href="{% url 'profile' %}">Profile</a>
     <a class="button button-secondary" href="{% url 'edit_email' %}">Edit Email</a>
     <a class="button button-secondary" href="{% url 'password_change' %}">Change Password</a>
-</section>
+</nav>
 
-<section class="profile-layout">
+<div class="profile-layout">
     <section class="profile-card panel">
         <div class="profile-avatar">
             {{ user.username|first|upper }}
@@ -40,21 +40,25 @@
 
         <div class="stats-grid">
             <article>
+                <h3 class="visually-hidden">Total Games</h3>
                 <span>{{ total_games }}</span>
                 <p>Total games</p>
             </article>
 
             <article>
+                <h3 class="visually-hidden">Favourite Games</h3>
                 <span>{{ favourite_games }}</span>
                 <p>Favourite games</p>
             </article>
 
             <article>
+                <h3 class="visually-hidden">Platforms Owned</h3>
                 <span>{{ platform_count }}</span>
                 <p>Platforms owned on</p>
             </article>
 
             <article>
+                <h3 class="visually-hidden">Total Play Sessions</h3>
                 <span>{{ total_play_sessions }}</span>
                 <p>Total play sessions</p>
             </article>
@@ -71,7 +75,7 @@
             {% endfor %}
         </ul>
     </section>
-</section>
+</div>
 
 {% if has_premium %}
     <section class="premium-profile-panel panel">
@@ -86,11 +90,13 @@
 
         <div class="premium-stats-grid">
             <article>
+                <h3 class="visually-hidden">Favourite Rate</h3>
                 <span>{{ favourite_percentage }}%</span>
                 <p>Favourite rate</p>
             </article>
 
             <article>
+                <h3 class="visually-hidden">Most Played Game</h3>
                 {% if most_played_game %}
                     <span>{{ most_played_count }}</span>
                     <p>Sessions with {{ most_played_game.title }}</p>
@@ -136,6 +142,7 @@
                 <div class="recent-session-list">
                     {% for session in recent_sessions %}
                         <article class="recent-session-item">
+                            <h4 class="visually-hidden">Play Session</h4>
                             <strong>{{ session.game.title }}</strong>
                             <span>{{ session.date_played }}</span>
 

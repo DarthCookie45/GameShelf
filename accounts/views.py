@@ -7,6 +7,7 @@ from checkout.utils import user_has_premium
 from games.models import Game, PlaySession
 from .forms import CustomUserCreationForm, EmailUpdateForm
 
+
 # Create your views here.
 # Register view
 def register(request):
@@ -31,7 +32,8 @@ def register(request):
 @login_required
 def profile(request):
     user_games = Game.objects.filter(owner=request.user)
-    user_sessions = PlaySession.objects.filter(game__owner=request.user).select_related('game')
+    user_sessions = PlaySession.objects.filter(
+        game__owner=request.user).select_related('game')
 
     total_games = user_games.count()
     favourite_games = user_games.filter(favourite=True).count()
@@ -53,7 +55,9 @@ def profile(request):
     ownership_stats = {}
 
     for value, label in Game.OWNERSHIP_CHOICES:
-        ownership_stats[label] = user_games.filter(ownership_status=value).count()
+        ownership_stats[label] = user_games.filter(
+            ownership_status=value
+            ).count()
 
     favourite_percentage = 0
 
@@ -102,7 +106,7 @@ def logout_user(request):
     return redirect('home')
 
 
-#Update email view
+# Update email view
 @login_required
 def edit_email(request):
     if request.method == 'POST':
