@@ -16,9 +16,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('games/', include('games.urls')),
-    path('checkout/', include('checkout.urls')),
     path(
         'accounts/login/',
         auth_views.LoginView.as_view(
@@ -27,6 +24,9 @@ urlpatterns = [
         ),
         name='login',
     ),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('games/', include('games.urls')),
+    path('checkout/', include('checkout.urls')),
 ]
 
 if settings.DEBUG:
